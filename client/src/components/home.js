@@ -1,7 +1,7 @@
 import React from 'react';
 
 import LogoutButton from './auth0/logout';
-import Profile from './auth0/profile';
+import Profile from './links/profile';
 
 const Home = () => {
   return (

@@ -1,8 +1,10 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
+import { Routes, Route, Link } from 'react-router-dom';
 
 import Home from './components/home';
 import LoginPage from './components/loginPage';
+import Profile from './components/links/profile';
 
 function App() {
   const { isAuthenticated, isLoading, user } = useAuth0();
@@ -29,7 +31,20 @@ function App() {
 
     return (
       <div className="App">
-        <Home />
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/profile">Profile</Link>
+            </li>
+          </ul>
+        </nav>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
       </div>
     );
   }
