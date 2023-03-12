@@ -1,16 +1,15 @@
-import axios from 'axios';
 
-import TextField from '@material-ui/core/TextField';
+import TextField from '@mui/material/TextField';
 
 const Posts = () => {
 
 
 
-    
+
   return (
     <div>
       <h1>Posts</h1>
-      <form onSubmit={handleSubmit}>
+      <form >
         <TextField id="title" label="Title" margin="normal" />
         <br />
         <TextField id="body" label="Body" multiline rowsMax="4" margin="normal" />
