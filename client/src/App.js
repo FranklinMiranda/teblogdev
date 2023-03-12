@@ -1,8 +1,5 @@
-import React, { useEffect, useContext } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import axios from 'axios';
 import { Routes, Route, Link } from 'react-router-dom';
-import Context from './components/utils/context';
 
 import Home from './components/home';
 import LoginPage from './components/loginPage';
@@ -10,27 +7,8 @@ import Profile from './components/links/profile';
 import Posts from './components/links/posts';
 
 function App() {
-  const { isAuthenticated, isLoading, user } = useAuth0();
-  const context = useContext(Context);
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      axios
-        .post('/api/userprofiletodb', user)
-        .then(
-          axios
-            .get('/api/userprofilefromdb', user)
-            .then((res) => context.handleAddDBProfile(res.data))
-            .catch((err) => {
-              console.log(err);
-            })
-        )
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [isAuthenticated, user]);
-
+  const { isAuthenticated, isLoading } = useAuth0();
+ 
   if (isLoading) {
     return <div>Loading ...</div>;
   }

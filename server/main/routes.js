@@ -15,12 +15,11 @@ router.post('/api/userprofiletodb', (req, res, next) => {
   );
 });
 
-router.get('/api/userprofilefromdb', (req, res, next) => {
+router.post('/api/userprofilefromdb', (req, res, next) => {
   const email = req.body.email;
-  console.log(email);
 
   pool.query(`SELECT * FROM users WHERE email=$1`, [email], (q_err, q_res) => {
-    res.json(q_res.rows);
+    res.json(q_res.rows[0]);
   });
 });
 
