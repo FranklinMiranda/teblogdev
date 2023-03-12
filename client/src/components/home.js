@@ -1,5 +1,3 @@
-import React from 'react';
-
 import LogoutButton from './auth0/logout';
 import Profile from './links/profile';
 
