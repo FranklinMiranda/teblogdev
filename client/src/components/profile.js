@@ -19,7 +19,7 @@ const Profile = () => {
         console.log(err);
       });
   }
-
+  
   return (
     isAuthenticated && (
       <div>
