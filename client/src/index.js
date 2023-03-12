@@ -2,7 +2,6 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -11,8 +10,6 @@ root.render(
     clientId="fzqgnVurba26VOn2X3mtENcDECis00sE"
     authorizationParams={{ redirect_uri: 'http://localhost:3000' }}
   >
-    <BrowserRouter>
       <App />
-    </BrowserRouter>
   </Auth0Provider>
 );
