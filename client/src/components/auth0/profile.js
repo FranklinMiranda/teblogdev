@@ -3,11 +3,7 @@ import React from 'react';
 import axios from 'axios';
 
 const Profile = () => {
-  const { user, isAuthenticated, isLoading } = useAuth0();
-
-  if (isLoading) {
-    return <div>Loading ...</div>;
-  }
+  const { user, isAuthenticated } = useAuth0();
 
   if (isAuthenticated) {
     axios
@@ -18,8 +14,8 @@ const Profile = () => {
       .catch((err) => {
         console.log(err);
       });
-    }
-    
+  }
+
   return (
     isAuthenticated && (
       <div>
