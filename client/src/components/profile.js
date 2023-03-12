@@ -8,17 +8,6 @@ const Profile = () => {
   if (isLoading) {
     return <div>Loading ...</div>;
   }
-
-  if (isAuthenticated) {
-    axios
-      .post('/api/userprofiletodb', user)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
   
   return (
     isAuthenticated && (
