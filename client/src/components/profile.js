@@ -9,14 +9,16 @@ const Profile = () => {
     return <div>Loading ...</div>;
   }
 
-  axios
-    .post('/api/userprofiletodb', user)
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  if (isAuthenticated) {
+    axios
+      .post('/api/userprofiletodb', user)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   return (
     isAuthenticated && (
