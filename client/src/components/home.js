@@ -5,12 +5,12 @@ import Context from './utils/context'
 import {useContext} from "react"
 
 const Home = () => {
-  const name = useContext(Context)
+  const context = useContext(Context)
 
   return (
     <div>
       <h1>Welcome to Time Expeditions Blog!</h1>
-      <h2>{name}</h2>
+      <h2>{context.dbProfileState}</h2>
       <Profile />
       <LogoutButton />
     </div>
