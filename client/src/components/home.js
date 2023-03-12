@@ -24,25 +24,8 @@ const Home = () => {
   } else if (isAuthenticated) {
     return (
       <div>
-        <BrowserRouter>
-          <h1>Welcome to Time Expeditions Blog!</h1>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/profile">Profile</Link>
-              </li>
-            </ul>
-          </nav>
-          <LogoutButton />
-
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/profile" element={<Profile />} />
-          </Routes>
-        </BrowserRouter>
+        <Profile />
+        <LogoutButton />
       </div>
     );
   }
