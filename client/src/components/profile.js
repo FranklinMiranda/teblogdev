@@ -18,7 +18,8 @@ const Profile = () => {
       .catch((err) => {
         console.log(err);
       });
-  
+    }
+    
   return (
     isAuthenticated && (
       <div>

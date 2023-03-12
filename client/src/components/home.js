@@ -7,7 +7,7 @@ import LogoutButton from './logout';
 import Profile from './profile';
 
 const Home = () => {
-  const { isAuthenticated, isLoading, user } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
 
   if (isLoading) {
     return <div>Loading ...</div>;
