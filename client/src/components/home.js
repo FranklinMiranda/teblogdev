@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import LoginButton from './login';
+import LogoutButton from './logout'
 import Profile from './profile';
 
 const Home = () => {
@@ -23,6 +24,7 @@ const Home = () => {
       <div>
         <h1>Welcome to Time Expeditions Blog!</h1>
         <Profile />
+        <LogoutButton/>
       </div>
     );
   }
