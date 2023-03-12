@@ -4,7 +4,7 @@ import React from 'react';
 const LogoutButton = () => {
   const { logout } = useAuth0();
 
-  return <button onClick={() => logout({ logoutParams: { returnTo: 'http://timeexpeditionsblog.com' } })}>Log Out</button>;
+  return <button onClick={() => logout({ logoutParams: { returnTo: 'http://localhost:3000' } })}>Log Out</button>;
 };
 
 export default LogoutButton;
