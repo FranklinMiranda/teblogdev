@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var pool = require('./db');
 
+// User Profile Express Routes
 router.post('/api/userprofiletodb', (req, res, next) => {
   const values = [req.body.name, req.body.email];
   
