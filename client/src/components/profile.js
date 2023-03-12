@@ -10,7 +10,7 @@ const Profile = () => {
   }
 
   axios
-    .post('/api/userprofiletodb', user)
+    .post('localhost:5000/api/userprofiletodb', user)
     .then((res) => {
       console.log(res);
     })
