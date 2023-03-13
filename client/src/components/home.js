@@ -32,7 +32,6 @@ const Home = () => {
   return (
     <div>
       <h1>Welcome to Time Expeditions Blog!</h1>
-      <Profile />
       <LogoutButton />
     </div>
   );
