@@ -34,6 +34,18 @@ const EditPosts = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    const data = {
+      title: editPost.title,
+      body: editPost.body,
+      uid: editPost.user_id,
+      pid: editPost.pid,
+      username: editPost.author,
+    };
+
+    axios.post('/api/post/updatepost', data).catch((err) => console.log(err));
+
+    setEditPost();
   };
 
   if (!editPost) {
@@ -59,7 +71,7 @@ const EditPosts = () => {
             Title:
             <input type="text" value={editPost.title} onChange={handleChangeTitle}></input>
           </label>
-          <br/>
+          <br />
           <label>
             Body:
             <textarea value={editPost.body} onChange={handleChangeBody}></textarea>

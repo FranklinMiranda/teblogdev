@@ -55,4 +55,14 @@ router.post('/api/post/allposts', (req, res, next) => {
   });
 });
 
+router.post('/api/post/updatepost', (req, res, next) => {
+  const values = [req.body.title, req.body.body, req.body.uid, req.body.pid, req.body.username];
+
+  pool.query(
+    `UPDATE posts SET title=$1, body=$2, user_id=$3, author=$5, date_created=NOW() WHERE pid=$4`,
+    values,
+    (q_err, q_res) => {}
+  );
+});
+
 module.exports = router;
