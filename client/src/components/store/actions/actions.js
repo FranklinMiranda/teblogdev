@@ -14,3 +14,19 @@ export const remove_db_profile = () => {
     type: ACTION_TYPES.REMOVE_DB_PROFILE,
   };
 };
+
+
+// post_reducer Actions
+
+export const set_db_posts = (posts) => {
+  return {
+    type: ACTION_TYPES.FETCH_DB_POSTS,
+    payload: posts
+  }
+}
+
+export const remove_db_posts = () => {
+  return {
+    type: ACTION_TYPES.REMOVE_DB_POSTS
+  }
+}

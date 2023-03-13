@@ -39,4 +39,10 @@ router.post('/api/post/posttodb', (req, res, next) => {
   );
 });
 
+router.post('/api/post/allposts', (req, res, next) => {
+  pool.query('SELECT * FROM posts ORDER BY date_created DESC', (q_err, q_res) => {
+    res.json(q_res.rows);
+  });
+});
+
 module.exports = router;
