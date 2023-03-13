@@ -46,6 +46,7 @@ const EditPosts = () => {
     axios.post('/api/post/updatepost', data).catch((err) => console.log(err));
 
     setEditPost();
+    setId();
   };
 
   if (!editPost) {
