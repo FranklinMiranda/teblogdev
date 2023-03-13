@@ -4,14 +4,24 @@ var pool = require('./db');
 
 // User Profile Express Routes
 router.post('/api/userprofiletodb', (req, res, next) => {
-  const values = [req.body.name, req.body.email];
+  let el = req.body.email;
+  el = el.split('');
+
+  let username = '';
+
+  for (let i = 0; i < el.length; i++) {
+    if (el[i] === '@') {
+      break;
+    }
+    username += el[i];
+  }
+
+  const values = [username, req.body.email, req.body.name];
 
   pool.query(
-    'INSERT INTO users(username, email, date_created) VALUES($1, $2, NOW()) ON CONFLICT DO NOTHING',
+    'INSERT INTO users(username, email, name, date_created) VALUES($1, $2, $3, NOW())',
     values,
-    (q_err, q_res) => {
-      res.json(q_res.rows);
-    }
+    (q_err, q_res) => {}
   );
 });
 

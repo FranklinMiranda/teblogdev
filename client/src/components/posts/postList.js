@@ -16,14 +16,13 @@ const SinglePost = (props) => {
 
 const PostsList = () => {
   const globalState = useContext(GlobalState);
-  const { user } = useAuth0();
 
   const profile = globalState.dbProfileState
   const postArr = globalState.postsState;
   const postItems = postArr.map((p) => {
     if (!p.title) {
       return
-    } else if (profile.email !== user.email) {
+    } else if (profile.username !== p.author) {
       return
     }
 
