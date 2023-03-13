@@ -23,6 +23,13 @@ const Home = () => {
           console.log(err);
         });
     }
+
+    if (!globalState.postsState) {
+      axios
+        .post('/api/post/allposts')
+        .then((res) => globalState.handleAddPosts(res.data))
+        .catch((err) => console.log(err));
+    }
   }, []);
 
   return (
