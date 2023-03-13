@@ -1,11 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 
 import GlobalState from '../utils/context';
-import TextField from '@mui/material/TextField';
 
 const AddPosts = () => {
   const globalState = useContext(GlobalState);
+
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
+
+  const handleChangeTitle = (event) => {
+    setTitle(event.target.value);
+  };
+
+  const handleChangeBody = (event) => {
+    setBody(event.target.value);
+  };
+
+  const handleClear = () => {
+    setTitle('');
+    setBody('');
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -13,8 +28,8 @@ const AddPosts = () => {
     const username = globalState.dbProfileState.username;
 
     const data = {
-      title: event.target.title.value,
-      body: event.target.body.value,
+      title: title,
+      body: body,
       username: username,
       uid: user_id,
     };
@@ -22,18 +37,25 @@ const AddPosts = () => {
     axios
       .post('/api/post/posttodb', data)
       .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .then(() => handleClear());
   };
 
   return (
     <div>
       <h1>Add a Post</h1>
       <form onSubmit={handleSubmit}>
-        <TextField id="title" label="Title" margin="normal" />
+        <label>
+          Title:
+          <input type="text" value={title} onChange={handleChangeTitle}></input>
+        </label>
         <br />
-        <TextField id="body" label="Body" multiline rowsMax="4" margin="normal" />
-        <br />
+        <label>
+          Body:
+          <textarea value={body} onChange={handleChangeBody}></textarea>
+        </label>
         <button type="submit"> Submit </button>
+        <button onClick={handleClear}> Cancel </button>
       </form>
     </div>
   );
