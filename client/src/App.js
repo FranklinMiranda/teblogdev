@@ -1,8 +1,8 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import { Routes, Route, Link } from 'react-router-dom';
 
-import Home from './components/home';
-import LoginPage from './components/loginPage';
+import Home from './components/links/home';
+import LoginPage from './components/links/loginPage';
 import Profile from './components/links/profile';
 import Posts from './components/links/posts';
 

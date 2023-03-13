@@ -1,10 +1,10 @@
 import axios from 'axios';
-import GlobalState from './utils/context';
+import GlobalState from '../utils/context';
 import React, { useEffect, useContext } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 
-import LogoutButton from './auth0/logout';
-import Profile from './links/profile';
+import LogoutButton from '../auth0/logout';
+import Profile from './profile';
 
 const Home = () => {
   const { isAuthenticated, user } = useAuth0();
