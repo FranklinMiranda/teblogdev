@@ -5,10 +5,10 @@ import GlobalState from '../utils/context';
 const SinglePost = (props) => {
   return (
     <div>
-      <h4>{props.post.title}</h4>
-      <p>{props.post.author}</p>
-      <p>{props.post.body}</p>
-      <p>{props.post.date_created}</p>
+      <h4>Title: {props.post.title}</h4>
+      <p>Author: {props.post.author}</p>
+      <p>Body: {props.post.body}</p>
+      <p>Date Created: {props.post.date_created}</p>
     </div>
   );
 };
