@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Context from './utils/context';
+import GlobalState from './utils/context';
 import React, { useEffect, useContext } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 
@@ -9,7 +9,7 @@ import LogoutButton from './auth0/logout';
 
 const Home = () => {
     const { isAuthenticated, user } = useAuth0();
-    const context = useContext(Context);
+    const globalState = useContext(GlobalState);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -20,7 +20,7 @@ const Home = () => {
 
       axios
         .post('/api/userprofilefromdb', user)
-        .then((res) => context.handleAddDBProfile(res.data))
+        .then((res) => globalState.handleAddDBProfile(res.data))
         .catch((err) => {
           console.log(err);
         });

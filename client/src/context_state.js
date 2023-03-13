@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import Context from './components/utils/context';
+import GlobalState from './components/utils/context';
 import * as ACTIONS from './components/store/actions/actions';
 
 import * as AuthReducer from './components/store/reducers/auth_reducer';
@@ -19,7 +19,7 @@ const ContextState = () => {
   };
 
   return (
-    <Context.Provider
+    <GlobalState.Provider
       value={{
         //Auth Reducer
         dbProfileState: stateAuthReducer.db_profile,
@@ -29,7 +29,7 @@ const ContextState = () => {
       }}
     >
       <App />
-    </Context.Provider>
+    </GlobalState.Provider>
   );
 };
 
