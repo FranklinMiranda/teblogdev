@@ -43,7 +43,7 @@ const AddPosts = () => {
 
   return (
     <div>
-      <h1>Add a Post</h1>
+      <h2>Add a Post</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Title:

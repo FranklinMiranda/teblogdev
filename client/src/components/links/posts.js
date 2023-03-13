@@ -4,7 +4,7 @@ import axios from 'axios';
 import GlobalState from '../utils/context';
 
 import AddPosts from '../posts/addPost';
-//import Post from '../posts/post';
+import SinglePost from "../posts/post"
 
 const Posts = () => {
   const globalState = useContext(GlobalState);
@@ -18,23 +18,13 @@ const Posts = () => {
     }
   }, []);
 
-
-  const postArr = globalState.postsState
-  const postList = postArr.map((p) => {
-    return <li>{p.title}</li>
-  })
-  
-
   return (
     <div>
       <h1>Posts</h1>
       <AddPosts />
-      <ol>
-      {postList}
-      </ol>
+      <SinglePost/>
     </div>
   );
 };
 
 export default Posts;
-
