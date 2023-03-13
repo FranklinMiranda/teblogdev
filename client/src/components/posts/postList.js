@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 
 import GlobalState from '../utils/context';
 
@@ -15,11 +16,15 @@ const SinglePost = (props) => {
 
 const PostsList = () => {
   const globalState = useContext(GlobalState);
+  const { user } = useAuth0();
 
+  const profile = globalState.dbProfileState
   const postArr = globalState.postsState;
   const postItems = postArr.map((p) => {
     if (!p.title) {
-      return;
+      return
+    } else if (profile.email !== user.email) {
+      return
     }
 
     return (
