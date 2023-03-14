@@ -16,24 +16,25 @@ function App() {
   const globalState = useContext(GlobalState);
 
   useEffect(() => {
+    axios.post('/api/userprofiletodb', user).catch((err) => {
+      console.log(err);
+    });
+
     axios
-      .post('/api/userprofiletodb', user)
-      .then(
-        axios
-          .post('/api/userprofilefromdb', user)
-          .then((res) => globalState.handleAddDBProfile(res.data))
-          .catch((err) => {
-            console.log(err);
-          })
-      )
+      .post('/api/userprofilefromdb', user)
+      .then((res) => globalState.handleAddDBProfile(res.data))
       .catch((err) => {
         console.log(err);
       });
 
     axios
       .post('/api/post/allposts')
-      .then((res) => globalState.handleAddPosts(res.data))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        globalState.handleAddPosts(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (

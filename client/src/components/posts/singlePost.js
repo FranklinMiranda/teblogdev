@@ -14,24 +14,27 @@ const SinglePost = (props) => {
     setLikes([...likes, dbProfile.username]);
   };
 
-  const data = {
-    pid: post.pid,
-    liked_by: likes,
-  };
-
   useEffect(() => {
-    axios
-      .post('/api/post/updatepostlikes', data)
-      .then(
-        axios
-          .post('/api/post/allposts')
-          .then((res) => 
-          globalState.handleAddPosts(res.data)
-          )
-          .catch((err) => console.log(err))
-      )
-      .catch((err) => console.log(err));
-  }, [likes]);
+    if (post.liked_by.length !== likes.length) {
+      const data = {
+        pid: post.pid,
+        liked_by: likes,
+      };
+
+console.log(likes)
+
+      axios
+        .post('/api/post/updatepostlikes', data)
+        .then(() => {console.log("AXIOS")})
+        .catch((err) => console.log(err))
+        .then(() => {
+          axios
+            .post('/api/post/allposts')
+            .then((res) => globalState.handleAddPosts(res.data))
+            .catch((err) => console.log(err));
+        });
+    }
+  });
 
   if (!likes.includes(dbProfile.username)) {
     return (

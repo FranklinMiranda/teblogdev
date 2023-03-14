@@ -36,14 +36,14 @@ const AddPosts = () => {
 
     axios
       .post('/api/post/posttodb', data)
-      .then(
+      .catch((err) => console.log(err))
+      .then(() => handleClear())
+      .then(() => {
         axios
           .post('/api/post/allposts')
           .then((res) => globalState.handleAddPosts(res.data))
-          .catch((err) => console.log(err))
-      )
-      .catch((err) => console.log(err))
-      .then(() => handleClear());
+          .catch((err) => console.log(err));
+      });
   };
 
   return (

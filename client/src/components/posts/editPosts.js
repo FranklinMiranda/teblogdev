@@ -51,13 +51,13 @@ const EditPosts = () => {
 
     axios
       .post('/api/post/updatepost', data)
-      .then(
+      .catch((err) => console.log(err))
+      .then(() => {
         axios
           .post('/api/post/allposts')
           .then((res) => globalState.handleAddPosts(res.data))
-          .catch((err) => console.log(err))
-      )
-      .catch((err) => console.log(err));
+          .catch((err) => console.log(err));
+      });
 
     setEditPost();
     setId();

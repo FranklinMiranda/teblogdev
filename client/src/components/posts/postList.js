@@ -9,6 +9,7 @@ const PostsList = () => {
 
   const profile = globalState.dbProfileState;
   const postArr = globalState.postsState;
+  
   const postItems = postArr.map((p, i) => {
     if (!p.title) {
       return;
