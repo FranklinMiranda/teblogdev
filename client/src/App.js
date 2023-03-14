@@ -7,7 +7,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 import Home from './components/links/home';
 import Profile from './components/links/profile';
-import Posts from './components/links/posts';
+import MyPosts from './components/links/myposts';
 
 function App() {
   const { user } = useAuth0();
@@ -43,17 +43,17 @@ function App() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/profile">Profile</Link>
+            <Link to="/myprofile">My Profile</Link>
           </li>
           <li>
-            <Link to="/posts">Posts</Link>
+            <Link to="/myposts">My Posts</Link>
           </li>
         </ul>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/posts" element={<Posts />} />
+        <Route path="/myprofile" element={<Profile />} />
+        <Route path="/myposts" element={<MyPosts />} />
       </Routes>
     </div>
   );
