@@ -81,4 +81,16 @@ router.post('/api/post/updatepostlikes', (req, res, next) => {
   res.json('...');
 });
 
+// Comments Express Route
+router.post('/api/comment/commenttodb', (req, res, next) => {
+  const values = [req.body.comment, req.body.author, req.body.uid, req.body.pid];
+
+  pool.query(
+    `INSERT INTO comments(comment, author, user_id, post_id, date_created) VALUES ($1, $2, $3, $4, NOW())`,
+    values,
+    (q_err, q_res) => {}
+  );
+  res.json('...');
+});
+
 module.exports = router;

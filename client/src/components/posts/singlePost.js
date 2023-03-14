@@ -3,6 +3,8 @@ import axios from 'axios';
 
 import GlobalState from '../utils/context';
 
+import Comments from './comments';
+
 const SinglePost = (props) => {
   const globalState = useContext(GlobalState);
   const dbProfile = globalState.dbProfileState;
@@ -60,6 +62,7 @@ const SinglePost = (props) => {
           <p>Liked By:</p>
           <ol>{postLikes}</ol>
           <button onClick={handleLike}>Like</button>
+          <Comments post={post}/>
         </li>
       </div>
     );
@@ -75,6 +78,7 @@ const SinglePost = (props) => {
           <p>Liked By:</p>
           <ol>{postLikes}</ol>
           <button onClick={handleUnlike}>Unlike</button>
+          <Comments post={post}/>
         </li>
       </div>
     );
