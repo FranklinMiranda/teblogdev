@@ -65,4 +65,10 @@ router.post('/api/post/updatepost', (req, res, next) => {
   );
 });
 
+router.post('/api/post/updatepostlikes', (req, res, next) => {
+  const values = [req.body.pid, req.body.liked_by];
+
+  pool.query(`UPDATE posts SET liked_by=$2 WHERE pid=$1`, values, (q_err, q_res) => {});
+});
+
 module.exports = router;

@@ -9,18 +9,14 @@ const PostsList = () => {
 
   const profile = globalState.dbProfileState;
   const postArr = globalState.postsState;
-  const postItems = postArr.map((p) => {
+  const postItems = postArr.map((p, i) => {
     if (!p.title) {
       return;
     } else if (profile.username !== p.author) {
       return;
     }
 
-    return (
-      <li key={p.pid}>
-        <SinglePost post={p} />
-      </li>
-    );
+    return <SinglePost i={i} />;
   });
 
   return (

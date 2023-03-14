@@ -8,16 +8,12 @@ const AllPostsList = () => {
   const globalState = useContext(GlobalState);
 
   const postArr = globalState.postsState;
-  const postItems = postArr.map((p) => {
+  const postItems = postArr.map((p, i) => {
     if (!p.title) {
       return;
     }
 
-    return (
-      <li key={p.pid}>
-        <SinglePost post={p} />
-      </li>
-    );
+    return <SinglePost i={i} />;
   });
 
   return (
