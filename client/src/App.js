@@ -8,7 +8,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import Home from './components/links/home';
 import Profile from './components/links/profile';
 import MyPosts from './components/links/myposts';
-import AddPosts from './components/posts/addPost'
+import AddPosts from './components/posts/addPost';
 import AllPosts from './components/links/allposts';
 
 function App() {
@@ -17,15 +17,18 @@ function App() {
   const globalState = useContext(GlobalState);
 
   useEffect(() => {
-    axios.post('/api/userprofiletodb', user).catch((err) => {
-      console.log(err);
-    });
-
     axios
-      .post('/api/userprofilefromdb', user)
-      .then((res) => globalState.handleAddDBProfile(res.data))
+      .post('/api/userprofiletodb', user)
       .catch((err) => {
         console.log(err);
+      })
+      .then(() => {
+        return axios
+          .post('/api/userprofilefromdb', user)
+          .then((res) => globalState.handleAddDBProfile(res.data))
+          .catch((err) => {
+            console.log(err);
+          });
       });
 
     axios
