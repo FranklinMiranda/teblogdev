@@ -4,15 +4,12 @@ import GlobalState from '../utils/context';
 
 import SinglePost from './singlePost';
 
-const PostsList = () => {
+const AllPostsList = () => {
   const globalState = useContext(GlobalState);
 
-  const profile = globalState.dbProfileState;
   const postArr = globalState.postsState;
   const postItems = postArr.map((p) => {
     if (!p.title) {
-      return;
-    } else if (profile.username !== p.author) {
       return;
     }
 
@@ -25,10 +22,10 @@ const PostsList = () => {
 
   return (
     <div>
-      <h2>Previous User Posts</h2>
+      <h2>All Posts</h2>
       <ol>{postItems}</ol>
     </div>
   );
 };
 
-export default PostsList;
+export default AllPostsList;
