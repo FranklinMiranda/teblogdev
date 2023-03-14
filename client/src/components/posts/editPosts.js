@@ -5,6 +5,8 @@ import GlobalState from '../utils/context';
 
 const EditPosts = () => {
   const globalState = useContext(GlobalState);
+
+  const dbProfile = globalState.dbProfileState;
   const postArr = globalState.postsState;
 
   const [id, setId] = useState();
@@ -30,6 +32,10 @@ const EditPosts = () => {
 
   const handleChangeBody = (event) => {
     setEditPost({ ...editPost, body: event.target.value });
+  };
+
+  const handleEditPostError = () => {
+    setEditPost();
   };
 
   const handleSubmit = (event) => {
@@ -61,6 +67,13 @@ const EditPosts = () => {
           </label>
           <button type="submit"> Select Post </button>
         </form>
+      </div>
+    );
+  } else if (editPost.author != dbProfile.username) {
+    return (
+      <div>
+        <h3>You can not edit another user's post</h3>
+        <button onClick={handleEditPostError}>Edit another Post</button>
       </div>
     );
   } else if (editPost) {
