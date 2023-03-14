@@ -28,15 +28,12 @@ const SinglePost = (props) => {
         liked_by: likes,
       };
 
+      axios.post('/api/post/updatepostlikes', data).catch((err) => console.log(err));
+
       axios
-        .post('/api/post/updatepostlikes', data)
-        .catch((err) => console.log(err))
-        .then(() => {
-          return axios
-            .post('/api/post/allposts')
-            .then((res) => globalState.handleAddPosts(res.data))
-            .catch((err) => console.log(err));
-        });
+        .post('/api/post/allposts')
+        .then((res) => globalState.handleAddPosts(res.data))
+        .catch((err) => console.log(err));
     }
   });
 
