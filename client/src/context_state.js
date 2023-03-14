@@ -5,7 +5,7 @@ import * as ACTIONS from './components/store/actions/actions';
 import * as AuthReducer from './components/store/reducers/auth_reducer';
 import * as PostsReducer from './components/store/reducers/posts_reducer';
 
-import App from './App';
+import Landing from './landing';
 
 const ContextState = () => {
   // Auth Reducer
@@ -47,7 +47,7 @@ const ContextState = () => {
         handleRemovePosts: () => handleRemovePosts(),
       }}
     >
-      <App />
+      <Landing />
     </GlobalState.Provider>
   );
 };
