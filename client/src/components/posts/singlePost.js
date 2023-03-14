@@ -9,9 +9,11 @@ const SinglePost = (props) => {
   const post = globalState.postsState[props.i];
 
   const [likes, setLikes] = useState(post.liked_by);
+  const [change, setChange] = useState();
 
   const handleLike = () => {
     setLikes([...likes, dbProfile.username]);
+    setChange(true);
   };
 
   const handleUnlike = () => {
@@ -19,23 +21,28 @@ const SinglePost = (props) => {
       return username !== dbProfile.username;
     });
     setLikes(newLikes);
+    setChange(false);
   };
 
   useEffect(() => {
-    if (post.liked_by.length !== likes.length) {
-      const data = {
-        pid: post.pid,
-        liked_by: likes,
-      };
+    const data = {
+      pid: post.pid,
+      liked_by: likes,
+    };
 
-      axios.post('/api/post/updatepostlikes', data).catch((err) => console.log(err));
-
-      axios
-        .post('/api/post/allposts')
-        .then((res) => globalState.handleAddPosts(res.data))
-        .catch((err) => console.log(err));
-    }
-  });
+    axios
+      .post('/api/post/updatepostlikes', data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err))
+      .then(() => {
+        axios
+          .post('/api/post/allposts')
+          .then((res) => globalState.handleAddPosts(res.data))
+          .catch((err) => console.log(err));
+      });
+  }, [change]);
 
   const postLikes = likes.map((like) => {
     return <li>{like}</li>;

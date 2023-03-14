@@ -23,6 +23,7 @@ router.post('/api/userprofiletodb', (req, res, next) => {
     values,
     (q_err, q_res) => {}
   );
+  res.json('...');
 });
 
 router.post('/api/userprofilefromdb', (req, res, next) => {
@@ -63,12 +64,14 @@ router.post('/api/post/updatepost', (req, res, next) => {
     values,
     (q_err, q_res) => {}
   );
+  res.json('...');
 });
 
 router.post('/api/post/updatepostlikes', (req, res, next) => {
   const values = [req.body.pid, req.body.liked_by];
 
   pool.query(`UPDATE posts SET liked_by=$2 WHERE pid=$1`, values, (q_err, q_res) => {});
+  res.json('...');
 });
 
 module.exports = router;

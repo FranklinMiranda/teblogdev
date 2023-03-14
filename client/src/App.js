@@ -17,15 +17,21 @@ function App() {
   const globalState = useContext(GlobalState);
 
   useEffect(() => {
-    axios.post('/api/userprofiletodb', user).catch((err) => {
-      console.log(err);
-    });
-
     axios
-      .post('/api/userprofilefromdb', user)
-      .then((res) => globalState.handleAddDBProfile(res.data))
+      .post('/api/userprofiletodb', user)
+      .then((res) => {
+        console.log(res);
+      })
       .catch((err) => {
         console.log(err);
+      })
+      .then(() => {
+        axios
+          .post('/api/userprofilefromdb', user)
+          .then((res) => globalState.handleAddDBProfile(res.data))
+          .catch((err) => {
+            console.log(err);
+          });
       });
 
     axios

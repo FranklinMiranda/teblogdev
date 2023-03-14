@@ -36,13 +36,17 @@ const AddPosts = () => {
 
     axios
       .post('/api/post/posttodb', data)
+      .then((res) => {
+        console.log(res);
+      })
       .catch((err) => console.log(err))
-      .then(() => handleClear());
-
-    axios
-      .post('/api/post/allposts')
-      .then((res) => globalState.handleAddPosts(res.data))
-      .catch((err) => console.log(err));
+      .then(() => handleClear())
+      .then(() => {
+        axios
+          .post('/api/post/allposts')
+          .then((res) => globalState.handleAddPosts(res.data))
+          .catch((err) => console.log(err));
+      });
   };
 
   return (
