@@ -16,6 +16,7 @@ const SinglePost = (props) => {
 
 const PostsList = () => {
   const globalState = useContext(GlobalState);
+  console.log(globalState, 'globalState')
 
   const profile = globalState.dbProfileState
   const postArr = globalState.postsState;

@@ -7,11 +7,10 @@ import LogoutButton from '../auth0/logout';
 import Profile from './profile';
 
 const Home = () => {
-  const { isAuthenticated, user } = useAuth0();
+  const {  user } = useAuth0();
   const globalState = useContext(GlobalState);
 
   useEffect(() => {
-    if (isAuthenticated) {
       axios.post('/api/userprofiletodb', user).catch((err) => {
         console.log(err);
       });
@@ -22,7 +21,7 @@ const Home = () => {
         .catch((err) => {
           console.log(err);
         });
-    }
+    
 
     axios
       .post('/api/post/allposts')
