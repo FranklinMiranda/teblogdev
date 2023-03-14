@@ -14,6 +14,13 @@ const SinglePost = (props) => {
     setLikes([...likes, dbProfile.username]);
   };
 
+  const handleUnlike = () => {
+    const newLikes = likes.filter((username) => {
+      return username !== dbProfile.username;
+    });
+    setLikes(newLikes);
+  };
+
   useEffect(() => {
     if (post.liked_by.length !== likes.length) {
       const data = {
@@ -21,19 +28,17 @@ const SinglePost = (props) => {
         liked_by: likes,
       };
 
-console.log(likes)
+      axios.post('/api/post/updatepostlikes', data).catch((err) => console.log(err));
 
       axios
-        .post('/api/post/updatepostlikes', data)
-        .then(() => {console.log("AXIOS")})
-        .catch((err) => console.log(err))
-        .then(() => {
-          axios
-            .post('/api/post/allposts')
-            .then((res) => globalState.handleAddPosts(res.data))
-            .catch((err) => console.log(err));
-        });
+        .post('/api/post/allposts')
+        .then((res) => globalState.handleAddPosts(res.data))
+        .catch((err) => console.log(err));
     }
+  });
+
+  const postLikes = likes.map((like) => {
+    return <li>{like}</li>;
   });
 
   if (!likes.includes(dbProfile.username)) {
@@ -45,7 +50,8 @@ console.log(likes)
           <p>Author: {post.author}</p>
           <p>Body: {post.body}</p>
           <p>Date Created: {post.date_created}</p>
-          <p>Liked By: {likes}</p>
+          <p>Liked By:</p>
+          <ol>{postLikes}</ol>
           <button onClick={handleLike}>Like</button>
         </li>
       </div>
@@ -59,8 +65,9 @@ console.log(likes)
           <p>Author: {post.author}</p>
           <p>Body: {post.body}</p>
           <p>Date Created: {post.date_created}</p>
-          <p>Liked By: {likes}</p>
-          <button>Unlike</button>
+          <p>Liked By:</p>
+          <ol>{postLikes}</ol>
+          <button onClick={handleUnlike}>Unlike</button>
         </li>
       </div>
     );

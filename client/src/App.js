@@ -8,6 +8,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import Home from './components/links/home';
 import Profile from './components/links/profile';
 import MyPosts from './components/links/myposts';
+import AddPosts from './components/posts/addPost'
 import AllPosts from './components/links/allposts';
 
 function App() {
@@ -51,6 +52,9 @@ function App() {
             <Link to="/myposts">My Posts</Link>
           </li>
           <li>
+            <Link to="/addpost">Add Posts</Link>
+          </li>
+          <li>
             <Link to="/allposts">All Posts</Link>
           </li>
         </ul>
@@ -59,6 +63,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/myprofile" element={<Profile />} />
         <Route path="/myposts" element={<MyPosts />} />
+        <Route path="/addpost" element={<AddPosts />} />
         <Route path="/allposts" element={<AllPosts />} />
       </Routes>
     </div>

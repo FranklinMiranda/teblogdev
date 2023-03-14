@@ -49,15 +49,12 @@ const EditPosts = () => {
       username: editPost.author,
     };
 
+    axios.post('/api/post/updatepost', data).catch((err) => console.log(err));
+
     axios
-      .post('/api/post/updatepost', data)
-      .catch((err) => console.log(err))
-      .then(() => {
-        axios
-          .post('/api/post/allposts')
-          .then((res) => globalState.handleAddPosts(res.data))
-          .catch((err) => console.log(err));
-      });
+      .post('/api/post/allposts')
+      .then((res) => globalState.handleAddPosts(res.data))
+      .catch((err) => console.log(err));
 
     setEditPost();
     setId();
