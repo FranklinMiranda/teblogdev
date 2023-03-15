@@ -106,4 +106,11 @@ router.post('/api/comment/updatecomment', (req, res, next) => {
   res.json('...');
 });
 
+router.post('/api/delete/comment', (req, res, next) => {
+  const cid = req.body.cid;
+
+  pool.query(`DELETE FROM comments WHERE cid =$1`, [cid], (q_err, q_res) => {});
+  res.json('...');
+});
+
 module.exports = router;
