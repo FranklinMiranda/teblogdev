@@ -5,6 +5,7 @@ import GlobalState from '../utils/context';
 
 const DeletePost = () => {
   const globalState = useContext(GlobalState);
+  const commentsArr = globalState.commentsState;
 
   const [id, setId] = useState();
 
@@ -14,6 +15,19 @@ const DeletePost = () => {
 
   const handleIdSubmit = (event) => {
     event.preventDefault();
+
+    const postComments = commentsArr.filter((c) => {
+      return c.post_id == id;
+    });
+
+    postComments.forEach((c) => {
+      const data = { cid: c.cid };
+
+      axios
+        .post('/api/delete/comment', data)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    });
 
     const data = { post_id: id };
 
@@ -26,8 +40,14 @@ const DeletePost = () => {
           .post('/api/post/allposts')
           .then((res) => globalState.handleAddPosts(res.data))
           .catch((err) => console.log(err));
+      })
+      .then(() => {
+        axios
+          .post('/api/comment/allcomments')
+          .then((res) => globalState.handleAddComments(res.data))
+          .catch((err) => console.log(err));
       });
-      
+
     setId('');
   };
 
