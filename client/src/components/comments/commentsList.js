@@ -18,7 +18,6 @@ const CommentsList = (props) => {
 
   return (
     <div>
-      <p>Post Comments</p>
       <ol>{commentItems}</ol>
     </div>
   );

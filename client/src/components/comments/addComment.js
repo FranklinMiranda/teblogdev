@@ -45,7 +45,8 @@ const AddComment = (props) => {
     setAddComment('');
   };
 
-  const handleAddCommentClear = () => {
+  const handleAddCommentClear = (event) => {
+    event.preventDefault();
     setAddComment('');
   };
 
