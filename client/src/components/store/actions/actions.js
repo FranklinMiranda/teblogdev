@@ -44,3 +44,18 @@ export const remove_comments = () => {
     type: ACTION_TYPES.REMOVE_COMMENTS
   }
 }
+
+// profile_reducer Actions
+export const set_profiles = (profiles) => {
+  return {
+    type: ACTION_TYPES.FETCH_PROFILES,
+    payload: profiles
+  }
+}
+
+export const remove_profiles = () => {
+  return {
+    type: ACTION_TYPES.REMOVE_PROFILES
+  }
+}
+

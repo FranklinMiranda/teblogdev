@@ -15,5 +15,7 @@ export const FETCH_COMMENTS = "FETCH_COMMENTS"
 
 export const REMOVE_COMMENTS = "REMOVE_COMMENTS"
 
+// profile_reducer Action Types
+export const FETCH_PROFILES = "FETCH_PROFILES"
 
-
+export const REMOVE_PROFILES = "REMOVE_PROFILES"

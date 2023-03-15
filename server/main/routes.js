@@ -34,6 +34,12 @@ router.post('/api/userprofilefromdb', (req, res, next) => {
   });
 });
 
+router.post('/api/profile/allprofiles', (req, res, next) => {
+  pool.query('SELECT * FROM users ORDER BY date_created DESC', (q_err, q_res) => {
+    res.json(q_res.rows);
+  });
+});
+
 // Posts Express Routes
 router.post('/api/post/posttodb', (req, res, next) => {
   const values = [req.body.title, req.body.body, req.body.uid, req.body.username];
@@ -112,5 +118,8 @@ router.post('/api/delete/comment', (req, res, next) => {
   pool.query(`DELETE FROM comments WHERE cid =$1`, [cid], (q_err, q_res) => {});
   res.json('...');
 });
+
+
+
 
 module.exports = router;

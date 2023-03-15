@@ -51,6 +51,15 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
+
+      axios
+      .post('/api/profile/allprofiles')
+      .then((res) => {
+        globalState.handleAddProfiles(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (
