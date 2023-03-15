@@ -137,4 +137,11 @@ router.post('/api/messages/messagetodb', (req, res, next) => {
   res.json('...');
 });
 
+router.post('/api/delete/message', (req, res, next) => {
+  const mid = req.body.mid;
+
+  pool.query(`DELETE FROM messages WHERE mid =$1`, [mid], (q_err, q_res) => {});
+  res.json('...');
+});
+
 module.exports = router;
