@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
+
+import GlobalState from '../utils/context';
+
 
 const AddComment = (props) => {
   const [addComment, setAddComment] = useState();
+  const globalState = useContext(GlobalState);
+
 
   const post = props.post;
 
@@ -25,7 +30,17 @@ const AddComment = (props) => {
       .then((res) => {
         console.log(res);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .then(() => {
+        axios
+          .post('/api/post/allcomments')
+          .then((res) => {
+            globalState.handleAddComments(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
 
     setAddComment('');
   };

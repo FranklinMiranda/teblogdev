@@ -4,6 +4,7 @@ import axios from 'axios';
 import GlobalState from '../utils/context';
 
 import Comments from './comments';
+import CommentsList from './commentsList';
 
 const SinglePost = (props) => {
   const globalState = useContext(GlobalState);
@@ -62,7 +63,8 @@ const SinglePost = (props) => {
           <p>Liked By:</p>
           <ol>{postLikes}</ol>
           <button onClick={handleLike}>Like</button>
-          <Comments post={post}/>
+          <Comments post={post} />
+          <CommentsList post={post} />
         </li>
       </div>
     );
@@ -78,7 +80,8 @@ const SinglePost = (props) => {
           <p>Liked By:</p>
           <ol>{postLikes}</ol>
           <button onClick={handleUnlike}>Unlike</button>
-          <Comments post={post}/>
+          <Comments post={post} />
+          <CommentsList post={post} />
         </li>
       </div>
     );
