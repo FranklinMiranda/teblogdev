@@ -12,7 +12,7 @@ const SingleComment = (props) => {
 
   const handleEditComment = () => {
     setEditComment(true);
-    setComment(props.c.comment)
+    setComment(props.c.comment);
   };
 
   const handleCommentChange = (event) => {
@@ -75,7 +75,6 @@ const SingleComment = (props) => {
     return (
       <div>
         <li>
-          <p>Comment ID: {props.c.cid}</p>
           <p>Comment Author: {props.c.author}</p>
           <p>Comment: {props.c.comment}</p>
           <button onClick={handleEditComment}>Edit Comment</button>
@@ -87,7 +86,6 @@ const SingleComment = (props) => {
     return (
       <div>
         <li>
-          <p>Comment ID: {props.c.cid}</p>
           <p>Comment Author: {props.c.author}</p>
           <p>Comment: {props.c.comment}</p>
         </li>

@@ -18,7 +18,7 @@ const CommentsList = (props) => {
 
   return (
     <div>
-      <ol>{commentItems}</ol>
+      <ul>{commentItems}</ul>
     </div>
   );
 };
