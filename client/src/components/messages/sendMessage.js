@@ -21,7 +21,8 @@ const SendMessage = (props) => {
     setMessage({ ...message, body: event.target.value });
   };
 
-  const handleClear = () => {
+  const handleClear = (event) => {
+    event.preventDefault()
     setMessage({ title: '', body: '' });
   };
 
