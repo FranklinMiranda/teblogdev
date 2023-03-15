@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 
+import SendMessage from '../messages/sendMessage';
+
 import GlobalState from '../utils/context';
 
 const SingleProfile = (props) => {
@@ -14,6 +16,7 @@ const SingleProfile = (props) => {
         <p>Username: {profile.username}</p>
         <p>Name: {profile.name}</p>
         <p>Email: {profile.email}</p>
+        <SendMessage profile={profile}/>
       </li>
     </div>
   );

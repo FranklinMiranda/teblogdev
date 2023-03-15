@@ -126,4 +126,15 @@ router.post('/api/messages/allmessages', (req, res, next) => {
   });
 });
 
+router.post('/api/messages/messagetodb', (req, res, next) => {
+  const values = [req.body.message_sender, req.body.message_to, req.body.message_title, req.body.message_body];
+
+  pool.query(
+    `INSERT INTO messages(message_sender, message_to, message_title, message_body, date_created) VALUES ($1, $2, $3, $4, NOW())`,
+    values,
+    (q_err, q_res) => {}
+  );
+  res.json('...');
+});
+
 module.exports = router;
