@@ -82,6 +82,12 @@ router.post('/api/post/updatepostlikes', (req, res, next) => {
 });
 
 // Comments Express Route
+router.post('/api/post/allcomments', (req, res, next) => {
+  pool.query('SELECT * FROM comments ORDER BY date_created DESC', (q_err, q_res) => {
+    res.json(q_res.rows);
+  });
+});
+
 router.post('/api/comment/commenttodb', (req, res, next) => {
   const values = [req.body.comment, req.body.author, req.body.uid, req.body.pid];
 

@@ -42,6 +42,15 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
+
+    axios
+      .post('/api/post/allcomments')
+      .then((res) => {
+        globalState.handleAddComments(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (

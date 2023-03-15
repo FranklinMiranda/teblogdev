@@ -4,6 +4,7 @@ import * as ACTIONS from './components/store/actions/actions';
 
 import * as AuthReducer from './components/store/reducers/auth_reducer';
 import * as PostsReducer from './components/store/reducers/posts_reducer';
+import * as CommentsReducer from './components/store/reducers/comments_reducer';
 
 import Landing from './landing';
 
@@ -30,6 +31,20 @@ const ContextState = () => {
     dispatchPostsReducer(ACTIONS.remove_db_posts());
   };
 
+  // Comment Reducer
+  const [stateCommentsReducer, dispatchCommentsReducer] = useReducer(
+    CommentsReducer.CommentsReducer,
+    CommentsReducer.initialState
+  );
+
+  const handleSetComments = (comments) => {
+    dispatchCommentsReducer(ACTIONS.set_comments(comments));
+  };
+
+  const handleRemoveComments = () => {
+    dispatchCommentsReducer(ACTIONS.remove_comments());
+  };
+
   return (
     <GlobalState.Provider
       value={{
@@ -45,6 +60,12 @@ const ContextState = () => {
         postsState: statePostsReducer.posts,
         handleAddPosts: (posts) => handleSetPosts(posts),
         handleRemovePosts: () => handleRemovePosts(),
+
+        // Comments Reducer
+        // Comments State
+        commentsState: stateCommentsReducer.comments,
+        handleAddComments: (comments) => handleSetComments(comments),
+        handleRemoveComments: () => handleRemoveComments(),
       }}
     >
       <Landing />

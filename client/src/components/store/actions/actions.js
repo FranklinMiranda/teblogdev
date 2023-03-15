@@ -30,3 +30,17 @@ export const remove_db_posts = () => {
     type: ACTION_TYPES.REMOVE_DB_POSTS
   }
 }
+
+// comment_reducer Actions 
+export const set_comments = (comments) => {
+  return {
+    type: ACTION_TYPES.FETCH_COMMENTS,
+    payload: comments
+  }
+}
+
+export const remove_comments = () => {
+  return {
+    type: ACTION_TYPES.REMOVE_COMMENTS
+  }
+}
