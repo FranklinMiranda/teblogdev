@@ -44,7 +44,7 @@ function App() {
       });
 
     axios
-      .post('/api/post/allcomments')
+      .post('/api/comment/allcomments')
       .then((res) => {
         globalState.handleAddComments(res.data);
       })

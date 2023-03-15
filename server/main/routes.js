@@ -82,7 +82,7 @@ router.post('/api/post/updatepostlikes', (req, res, next) => {
 });
 
 // Comments Express Route
-router.post('/api/post/allcomments', (req, res, next) => {
+router.post('/api/comment/allcomments', (req, res, next) => {
   pool.query('SELECT * FROM comments ORDER BY date_created DESC', (q_err, q_res) => {
     res.json(q_res.rows);
   });
@@ -96,6 +96,13 @@ router.post('/api/comment/commenttodb', (req, res, next) => {
     values,
     (q_err, q_res) => {}
   );
+  res.json('...');
+});
+
+router.post('/api/comment/updatecomment', (req, res, next) => {
+  const values = [req.body.comment, req.body.cid];
+
+  pool.query(`UPDATE comments SET comment=$1, date_created=NOW() WHERE cid=$2`, values, (q_err, q_res) => {});
   res.json('...');
 });
 

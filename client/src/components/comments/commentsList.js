@@ -13,7 +13,9 @@ const CommentsList = (props) => {
   const list = postComments.map((c) => {
     return (
       <li>
-        Comment Id: {c.cid} Comment: {c.comment}
+        <p>Comment ID: {c.cid}</p>
+        <p>Comment Author: {c.author}</p>
+        <p>Comment: {c.comment}</p>
       </li>
     );
   });

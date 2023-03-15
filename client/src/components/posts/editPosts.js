@@ -19,7 +19,7 @@ const EditPosts = () => {
   const handleIdSubmit = (event) => {
     event.preventDefault();
 
-    let filteredPost = postArr.filter((p) => {
+    const filteredPost = postArr.filter((p) => {
       return id == p.pid;
     });
 

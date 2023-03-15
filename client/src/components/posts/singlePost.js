@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import GlobalState from '../utils/context';
 
-import Comments from './comments';
+import Comments from '../comments/comments';
 
 const SinglePost = (props) => {
   const globalState = useContext(GlobalState);
