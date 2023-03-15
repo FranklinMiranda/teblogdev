@@ -7,13 +7,13 @@ import SinglePost from './singlePost';
 const PostsList = () => {
   const globalState = useContext(GlobalState);
 
-  const profile = globalState.dbProfileState;
+  const dbProfile = globalState.dbProfileState;
   const postArr = globalState.postsState;
   
   const postItems = postArr.map((p, i) => {
     if (!p.title) {
       return;
-    } else if (profile.username !== p.author) {
+    } else if (dbProfile.username !== p.author) {
       return;
     }
 

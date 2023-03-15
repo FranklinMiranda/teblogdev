@@ -18,7 +18,6 @@ const AllPostsList = () => {
 
   return (
     <div>
-      <h2>All Posts</h2>
       <ol>{postItems}</ol>
     </div>
   );

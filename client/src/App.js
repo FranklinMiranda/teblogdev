@@ -10,6 +10,7 @@ import Profile from './components/links/profile';
 import MyPosts from './components/links/myposts';
 import AddPosts from './components/posts/addPost';
 import AllPosts from './components/links/allposts';
+import AllProfiles from './components/profiles/allProfiles';
 
 function App() {
   const { user } = useAuth0();
@@ -81,6 +82,9 @@ function App() {
           <li>
             <Link to="/allposts">All Posts</Link>
           </li>
+          <li>
+            <Link to="/allprofiles">All Profiles</Link>
+          </li>
         </ul>
       </nav>
       <Routes>
@@ -89,6 +93,7 @@ function App() {
         <Route path="/myposts" element={<MyPosts />} />
         <Route path="/addpost" element={<AddPosts />} />
         <Route path="/allposts" element={<AllPosts />} />
+        <Route path="/allprofiles" element={<AllProfiles />} />
       </Routes>
     </div>
   );
