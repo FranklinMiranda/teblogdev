@@ -53,10 +53,19 @@ function App() {
         console.log(err);
       });
 
-      axios
+    axios
       .post('/api/profile/allprofiles')
       .then((res) => {
         globalState.handleAddProfiles(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    axios
+      .post('/api/messages/allmessages')
+      .then((res) => {
+        globalState.handleAddMessages(res.data);
       })
       .catch((err) => {
         console.log(err);

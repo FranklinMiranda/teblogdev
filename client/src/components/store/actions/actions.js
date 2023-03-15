@@ -59,3 +59,16 @@ export const remove_profiles = () => {
   }
 }
 
+// message_reducer Actions
+export const set_messages = (messages) => {
+  return {
+    type: ACTION_TYPES.FETCH_MESSAGES,
+    payload: messages
+  }
+}
+
+export const remove_messages = () => {
+  return {
+    type: ACTION_TYPES.REMOVE_MESSAGES
+  }
+}

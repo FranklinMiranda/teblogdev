@@ -119,7 +119,11 @@ router.post('/api/delete/comment', (req, res, next) => {
   res.json('...');
 });
 
-
-
+// Messages Express Route
+router.post('/api/messages/allmessages', (req, res, next) => {
+  pool.query('SELECT * FROM messages ORDER BY date_created DESC', (q_err, q_res) => {
+    res.json(q_res.rows);
+  });
+});
 
 module.exports = router;

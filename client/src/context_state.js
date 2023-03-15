@@ -6,6 +6,7 @@ import * as AuthReducer from './components/store/reducers/auth_reducer';
 import * as PostsReducer from './components/store/reducers/posts_reducer';
 import * as CommentsReducer from './components/store/reducers/comments_reducer';
 import * as ProfilesReducer from './components/store/reducers/profiles_reducer';
+import * as MessagesReducer from './components/store/reducers/messages_reducer';
 
 import Landing from './landing';
 
@@ -60,6 +61,20 @@ const ContextState = () => {
     dispatchProfilesReducer(ACTIONS.remove_profiles());
   };
 
+  // Message Reducer
+  const [stateMessagesReducer, dispatchMessagesReducer] = useReducer(
+    MessagesReducer.MessagesReducer,
+    MessagesReducer.initialState
+  );
+
+  const handleSetMessages = (messages) => {
+    dispatchMessagesReducer(ACTIONS.set_messages(messages));
+  };
+
+  const handleRemoveMessages = () => {
+    dispatchMessagesReducer(ACTIONS.remove_messages());
+  };
+
   return (
     <GlobalState.Provider
       value={{
@@ -82,11 +97,17 @@ const ContextState = () => {
         handleAddComments: (comments) => handleSetComments(comments),
         handleRemoveComments: () => handleRemoveComments(),
 
-        // Comments Reducer
-        // Comments State
+        // Profiles Reducer
+        // Profiles State
         profilesState: stateProfilesReducer.profiles,
         handleAddProfiles: (profiles) => handleSetProfiles(profiles),
         handleRemoveProfiles: () => handleRemoveProfiles(),
+
+        // Messages Reducer
+        // Messages State
+        messagesState: stateMessagesReducer.messages,
+        handleAddMessages: (messages) => handleSetMessages(messages),
+        handleRemoveMessages: () => handleRemoveMessages(),
       }}
     >
       <Landing />
