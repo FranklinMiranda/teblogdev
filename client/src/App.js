@@ -8,7 +8,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import Home from './components/links/home';
 import Profile from './components/links/profile';
 import MyPosts from './components/links/myposts';
-import MyMessages from './components/messages/myMessages';
+import MyMessages from './components/links/myMessages';
 import AddPosts from './components/posts/addPost';
 import AllPosts from './components/links/allposts';
 import AllProfiles from './components/profiles/allProfiles';

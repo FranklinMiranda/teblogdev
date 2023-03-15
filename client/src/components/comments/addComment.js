@@ -7,6 +7,8 @@ const AddComment = (props) => {
   const [addComment, setAddComment] = useState();
   const globalState = useContext(GlobalState);
 
+  const dbProfile = globalState.dbProfileState;
+
   const post = props.post;
 
   const handleChangeAddComment = (event) => {
@@ -18,7 +20,7 @@ const AddComment = (props) => {
 
     const data = {
       comment: addComment,
-      author: post.author,
+      author: dbProfile.username,
       uid: post.user_id,
       pid: post.pid,
     };

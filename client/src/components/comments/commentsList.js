@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 
 import GlobalState from '../utils/context';
 
+import SingleComment from './singleComment';
+
 const CommentsList = (props) => {
   const globalState = useContext(GlobalState);
   const commentsArr = globalState.commentsState;
@@ -10,20 +12,14 @@ const CommentsList = (props) => {
     return c.post_id === props.post.pid;
   });
 
-  const list = postComments.map((c) => {
-    return (
-      <li>
-        <p>Comment ID: {c.cid}</p>
-        <p>Comment Author: {c.author}</p>
-        <p>Comment: {c.comment}</p>
-      </li>
-    );
+  const commentItems = postComments.map((c) => {
+    return <SingleComment c={c} />;
   });
 
   return (
     <div>
       <p>Post Comments</p>
-      <ol>{list}</ol>
+      <ol>{commentItems}</ol>
     </div>
   );
 };

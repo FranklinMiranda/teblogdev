@@ -1,4 +1,4 @@
-import MessagesList from "./messagesList";
+import MessagesList from "../messages/messagesList";
 
 const MyMessages = () => {
   return (
