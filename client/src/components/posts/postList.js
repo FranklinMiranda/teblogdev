@@ -23,7 +23,7 @@ const PostsList = () => {
   return (
     <div>
       <h2>Previous User Posts</h2>
-      <ol>{postItems}</ol>
+      <ul>{postItems}</ul>
     </div>
   );
 };
