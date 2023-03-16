@@ -1,4 +1,4 @@
-import LoginButton from '../auth0/login';
+import LoginButton from './components/auth0/login';
 
 const LoginPage = () => {
   return (

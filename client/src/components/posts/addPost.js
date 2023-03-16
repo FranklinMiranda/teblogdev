@@ -6,20 +6,18 @@ import GlobalState from '../utils/context';
 const AddPosts = () => {
   const globalState = useContext(GlobalState);
 
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
+  const [post, setPost] = useState({ title: '', body: '' });
 
   const handleChangeTitle = (event) => {
-    setTitle(event.target.value);
+    setPost({ ...post, title: event.target.value });
   };
 
   const handleChangeBody = (event) => {
-    setBody(event.target.value);
+    setPost({ ...post, body: event.target.value });
   };
 
   const handleClear = () => {
-    setTitle('');
-    setBody('');
+    setPost({ title: '', body: '' });
   };
 
   const handleSubmit = (event) => {
@@ -28,8 +26,8 @@ const AddPosts = () => {
     const username = globalState.dbProfileState.username;
 
     const data = {
-      title: title,
-      body: body,
+      title: post.title,
+      body: post.body,
       username: username,
       uid: user_id,
     };
@@ -55,12 +53,12 @@ const AddPosts = () => {
       <form onSubmit={handleSubmit}>
         <label>
           Title:
-          <input type="text" value={title} onChange={handleChangeTitle}></input>
+          <input type="text" value={post.title} onChange={handleChangeTitle}></input>
         </label>
         <br />
         <label>
           Body:
-          <textarea value={body} onChange={handleChangeBody}></textarea>
+          <textarea value={post.body} onChange={handleChangeBody}></textarea>
         </label>
         <button type="submit"> Submit </button>
         <button onClick={handleClear}> Cancel </button>

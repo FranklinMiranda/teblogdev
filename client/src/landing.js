@@ -1,6 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react';
 
-import LoginPage from './components/links/loginPage';
+import LoginPage from './loginPage';
 import App from './App';
 
 const Landing = () => {
@@ -18,7 +18,7 @@ const Landing = () => {
     );
   } else if (isAuthenticated) {
     return (
-      <div className="App">
+      <div>
         <App />
       </div>
     );

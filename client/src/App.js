@@ -1,9 +1,9 @@
-import { Routes, Route, Link } from 'react-router-dom';
-
-import axios from 'axios';
-import GlobalState from './components/utils/context';
 import React, { useEffect, useContext } from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
+import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
+
+import GlobalState from './components/utils/context';
 
 import Home from './components/links/home';
 import Profile from './components/links/profile';
