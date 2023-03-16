@@ -10,7 +10,7 @@ root.render(
   <BrowserRouter>
     <Auth0Provider
       domain="dev-yfnh5rsri6uihrxp.us.auth0.com"
-      clientId="fzqgnVurba26VOn2X3mtENcDECis00sE"
+      clientId="mGc24ls7sPEKurfFLvGbUOqTxY4ON1e0"
       authorizationParams={{ redirect_uri: 'http://localhost:3000' }}
     >
       <ContextState/>
