@@ -3,12 +3,12 @@ import { Routes, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
 
-import GlobalState from './components/utils/context';
-
 import { useDispatch } from 'react-redux';
-import { fetch_messages } from './components/store/slices/messagesSlice';
-import { fetch_comments } from './components/store/slices/commentsSlice';
+import { fetch_user } from './components/store/slices/userSlice';
+import { fetch_posts } from './components/store/slices/postsSlice';
 import { fetch_profiles } from './components/store/slices/profilesSlice';
+import { fetch_comments } from './components/store/slices/commentsSlice';
+import { fetch_messages } from './components/store/slices/messagesSlice';
 
 import Home from './components/links/home';
 import Profile from './components/links/profile';
@@ -23,9 +23,6 @@ function App() {
 
   const { user } = useAuth0();
 
-  const globalState = useContext(GlobalState);
-
-
   useEffect(() => {
     axios
       .post('/api/userprofiletodb', user)
@@ -38,7 +35,7 @@ function App() {
       .then(() => {
         axios
           .post('/api/userprofilefromdb', user)
-          .then((res) => globalState.handleAddDBProfile(res.data))
+          .then((res) => dispatch(fetch_user(res.data)))
           .catch((err) => {
             console.log(err);
           });
@@ -47,7 +44,7 @@ function App() {
     axios
       .post('/api/post/allposts')
       .then((res) => {
-        globalState.handleAddPosts(res.data);
+        dispatch(fetch_posts(res.data));
       })
       .catch((err) => {
         console.log(err);

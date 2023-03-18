@@ -1,18 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
-import GlobalState from '../utils/context';
+import { useSelector } from 'react-redux';
+import { selectPosts } from '../store/slices/postsSlice';
 
 import SinglePost from './singlePost';
 
 const PostsList = (props) => {
-  const globalState = useContext(GlobalState);
+  const postsArr = useSelector(selectPosts);
+  const user = props.user;
 
-  const dbProfile = props.dbProfile;
-
-  const postArr = globalState.postsState;
-
-  const postItems = postArr.map((p, i) => {
-    if (!dbProfile) {
+  const postItems = postsArr.map((p, i) => {
+    if (!user) {
       if (!p.title) {
         return;
       }
@@ -22,7 +20,7 @@ const PostsList = (props) => {
 
     if (!p.title) {
       return;
-    } else if (dbProfile.username !== p.author) {
+    } else if (user.username !== p.author) {
       return;
     }
 

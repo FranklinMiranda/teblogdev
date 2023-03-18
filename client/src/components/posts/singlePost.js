@@ -1,19 +1,24 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
-import GlobalState from '../utils/context';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetch_posts, selectPosts } from '../store/slices/postsSlice';
+import { fetch_comments, selectComments } from '../store/slices/commentsSlice';
+import { selectUser } from '../store/slices/userSlice';
 
 import LikePost from './likePost';
 import Comments from '../comments/comments';
 
 const SinglePost = (props) => {
-  const globalState = useContext(GlobalState);
+  const dispatch = useDispatch();
+  const postsArr = useSelector(selectPosts);
+  const commentsArr = useSelector(selectComments);
+  const user = useSelector(selectUser);
+
   const [editPostDisplay, setEditPostDisplay] = useState(false);
   const [editPost, setEditPost] = useState();
 
-  const dbProfile = globalState.dbProfileState;
-  const commentsArr = globalState.commentsState;
-  const post = globalState.postsState[props.i];
+  const post = postsArr[props.i];
 
   const handleEditPostDisplay = () => {
     setEditPostDisplay(true);
@@ -48,7 +53,7 @@ const SinglePost = (props) => {
       .then(() => {
         axios
           .post('/api/post/allposts')
-          .then((res) => globalState.handleAddPosts(res.data))
+          .then((res) => dispatch(fetch_posts(res.data)))
           .catch((err) => console.log(err));
       });
 
@@ -79,13 +84,13 @@ const SinglePost = (props) => {
       .then(() => {
         axios
           .post('/api/post/allposts')
-          .then((res) => globalState.handleAddPosts(res.data))
+          .then((res) => dispatch(fetch_posts(res.data)))
           .catch((err) => console.log(err));
       })
       .then(() => {
         axios
           .post('/api/comment/allcomments')
-          .then((res) => globalState.handleAddComments(res.data))
+          .then((res) => dispatch(fetch_comments(res.data)))
           .catch((err) => console.log(err));
       });
   };
@@ -107,7 +112,7 @@ const SinglePost = (props) => {
         </form>
       </div>
     );
-  } else if (post.author === dbProfile.username) {
+  } else if (post.author === user.username) {
     return (
       <div>
         <li key={post.pid}>

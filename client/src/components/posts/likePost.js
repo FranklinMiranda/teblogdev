@@ -1,24 +1,28 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import GlobalState from '../utils/context';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetch_posts, selectPosts } from '../store/slices/postsSlice';
+import { selectUser } from '../store/slices/userSlice';
 
 const LikePost = (props) => {
-  const globalState = useContext(GlobalState);
-  const dbProfile = globalState.dbProfileState;
-  const post = globalState.postsState[props.i];
+  const dispatch = useDispatch();
+  const postsArr = useSelector(selectPosts);
+  const user = useSelector(selectUser);
+
+  const post = postsArr[props.i];
 
   const [likes, setLikes] = useState(post.liked_by);
   const [change, setChange] = useState();
 
   const handleLike = () => {
-    setLikes([...likes, dbProfile.username]);
+    setLikes([...likes, user.username]);
     setChange(true);
   };
 
   const handleUnlike = () => {
     const newLikes = likes.filter((username) => {
-      return username !== dbProfile.username;
+      return username !== user.username;
     });
     setLikes(newLikes);
     setChange(false);
@@ -39,7 +43,7 @@ const LikePost = (props) => {
       .then(() => {
         axios
           .post('/api/post/allposts')
-          .then((res) => globalState.handleAddPosts(res.data))
+          .then((res) => dispatch(fetch_posts(res.data)))
           .catch((err) => console.log(err));
       });
   }, [change]);
@@ -48,7 +52,7 @@ const LikePost = (props) => {
     return <li>{like}</li>;
   });
 
-  if (!likes.includes(dbProfile.username)) {
+  if (!likes.includes(user.username)) {
     return (
       <div>
         <p>Liked By:</p>

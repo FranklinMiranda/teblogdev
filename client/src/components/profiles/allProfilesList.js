@@ -1,21 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import SingleProfile from './singleProfile';
 
 import { useSelector } from 'react-redux';
 import { selectProfiles } from '../store/slices/profilesSlice';
-
-
-import GlobalState from '../utils/context';
+import { selectUser } from '../store/slices/userSlice';
 
 const ProfilesList = () => {
-  const globalState = useContext(GlobalState);
-
-  const dbProfile = globalState.dbProfileState;
+  const user = useSelector(selectUser);
   const profileArr = useSelector(selectProfiles);
 
   const profileItems = profileArr.map((p, i) => {
-    if (dbProfile.username === p.username) {
+    if (user.username === p.username) {
       return;
     }
 

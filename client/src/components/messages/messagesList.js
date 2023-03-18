@@ -1,16 +1,13 @@
-import React, { useContext } from 'react';
-
-import GlobalState from '../utils/context';
+import React from 'react';
 
 import { useSelector } from 'react-redux';
 import { selectMessages } from '../store/slices/messagesSlice';
+import { selectUser } from '../store/slices/userSlice';
 
 import SingleMessage from './singleMessage';
 
 const MessagesList = () => {
-  const globalState = useContext(GlobalState);
-
-  const dbProfile = globalState.dbProfileState;
+  const dbProfile = useSelector(selectUser);
   const messageArr = useSelector(selectMessages);
 
   const messageItems = messageArr.map((m, i) => {

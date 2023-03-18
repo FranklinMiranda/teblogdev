@@ -1,19 +1,15 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 
-import GlobalState from '../utils/context';
-
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetch_comments } from '../store/slices/commentsSlice';
+import { selectUser } from '../store/slices/userSlice';
 
 const AddComment = (props) => {
   const dispatch = useDispatch();
+  const dbProfile = useSelector(selectUser);
 
   const [addComment, setAddComment] = useState();
-
-  const globalState = useContext(GlobalState);
-
-  const dbProfile = globalState.dbProfileState;
 
   const post = props.post;
 

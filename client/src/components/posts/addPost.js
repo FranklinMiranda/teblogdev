@@ -1,10 +1,13 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
-import GlobalState from '../utils/context';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetch_posts } from '../store/slices/postsSlice';
+import { selectUser } from '../store/slices/userSlice';
 
 const AddPosts = () => {
-  const globalState = useContext(GlobalState);
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
 
   const [post, setPost] = useState({ title: '', body: '' });
 
@@ -16,20 +19,19 @@ const AddPosts = () => {
     setPost({ ...post, body: event.target.value });
   };
 
-  const handleClear = () => {
+  const handleClear = (event) => {
+    event.preventDefault();
     setPost({ title: '', body: '' });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const user_id = globalState.dbProfileState.uid;
-    const username = globalState.dbProfileState.username;
 
     const data = {
       title: post.title,
       body: post.body,
-      username: username,
-      uid: user_id,
+      username: user.username,
+      uid: user.uid,
     };
 
     axios
@@ -38,13 +40,14 @@ const AddPosts = () => {
         console.log(res);
       })
       .catch((err) => console.log(err))
-      .then(() => handleClear())
       .then(() => {
         axios
           .post('/api/post/allposts')
-          .then((res) => globalState.handleAddPosts(res.data))
+          .then((res) => dispatch(fetch_posts(res.data)))
           .catch((err) => console.log(err));
       });
+
+    setPost({ title: '', body: '' });
   };
 
   return (

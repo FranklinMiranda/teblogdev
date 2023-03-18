@@ -1,18 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
-import GlobalState from '../utils/context';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../store/slices/userSlice';
 
 import PostsList from '../posts/postList';
 
 const MyPosts = () => {
-  const globalState = useContext(GlobalState);
-
-  const dbProfile = globalState.dbProfileState;
+  const dbProfile = useSelector(selectUser);
 
   return (
     <div>
       <h1>My Posts</h1>
-      <PostsList dbProfile={dbProfile}/>
+      <PostsList dbProfile={dbProfile} />
     </div>
   );
 };

@@ -1,17 +1,13 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
-import GlobalState from '../utils/context';
-
-import { useDispatch } from 'react-redux';
-import { fetch_messages} from '../store/slices/messagesSlice';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { fetch_messages } from '../store/slices/messagesSlice';
+import { selectUser } from '../store/slices/userSlice';
 
 const SendMessage = (props) => {
-  const globalState = useContext(GlobalState);
-  const username = globalState.dbProfileState.username;
-
-  const dispatch = useDispatch()
+  const username = useSelector(selectUser);
+  const dispatch = useDispatch();
 
   const [displayMessageSender, setDisplayMessageSender] = useState(false);
   const [message, setMessage] = useState({ title: '', body: '' });
@@ -29,7 +25,7 @@ const SendMessage = (props) => {
   };
 
   const handleClear = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     setMessage({ title: '', body: '' });
   };
 
