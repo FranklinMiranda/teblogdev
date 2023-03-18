@@ -11,16 +11,10 @@ const PostsList = (props) => {
 
   const postItems = postsArr.map((p, i) => {
     if (!user) {
-      if (!p.title) {
-        return;
-      }
-
       return <SinglePost i={i} />;
     }
 
-    if (!p.title) {
-      return;
-    } else if (user.username !== p.author) {
+    if (user.username !== p.author) {
       return;
     }
 
