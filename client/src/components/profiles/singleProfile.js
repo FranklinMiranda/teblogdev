@@ -1,13 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import SendMessage from '../messages/sendMessage';
 
-import GlobalState from '../utils/context';
+import { useSelector } from 'react-redux';
+import { selectProfiles } from '../store/slices/profilesSlice';
 
 const SingleProfile = (props) => {
-  const globalState = useContext(GlobalState);
-
-  const profileArr = globalState.profilesState;
+  const profileArr = useSelector(selectProfiles);
   const profile = profileArr[props.i];
 
   return (
@@ -16,7 +15,7 @@ const SingleProfile = (props) => {
         <p>Username: {profile.username}</p>
         <p>Name: {profile.name}</p>
         <p>Email: {profile.email}</p>
-        <SendMessage profile={profile}/>
+        <SendMessage profile={profile} />
       </li>
     </div>
   );

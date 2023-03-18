@@ -1,9 +1,15 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 
+import { useDispatch } from 'react-redux';
+import { fetch_comments } from '../store/slices/commentsSlice';
+
+
 import GlobalState from '../utils/context';
 
 const SingleComment = (props) => {
+  const dispatch = useDispatch();
+
   const globalState = useContext(GlobalState);
   const [editComment, setEditComment] = useState(false);
   const [comment, setComment] = useState();
@@ -36,7 +42,7 @@ const SingleComment = (props) => {
       .then(() => {
         axios
           .post('/api/comment/allcomments')
-          .then((res) => globalState.handleAddComments(res.data))
+          .then((res) => dispatch(fetch_comments(res.data)))
           .catch((err) => console.log(err));
       });
 
@@ -53,7 +59,7 @@ const SingleComment = (props) => {
       .then(() => {
         axios
           .post('/api/comment/allcomments')
-          .then((res) => globalState.handleAddComments(res.data))
+          .then((res) => dispatch(fetch_comments(res.data)))
           .catch((err) => console.log(err));
       });
   };

@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 
-import GlobalState from '../utils/context';
+import { useSelector } from 'react-redux';
+import { selectComments } from '../store/slices/commentsSlice';
 
 import SingleComment from './singleComment';
 
 const CommentsList = (props) => {
-  const globalState = useContext(GlobalState);
-  const commentsArr = globalState.commentsState;
+  const commentsArr = useSelector(selectComments);
 
   const postComments = commentsArr.filter((c) => {
     return c.post_id === props.post.pid;

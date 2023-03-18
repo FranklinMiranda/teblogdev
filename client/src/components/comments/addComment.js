@@ -3,8 +3,14 @@ import axios from 'axios';
 
 import GlobalState from '../utils/context';
 
+import { useDispatch } from 'react-redux';
+import { fetch_comments } from '../store/slices/commentsSlice';
+
 const AddComment = (props) => {
+  const dispatch = useDispatch();
+
   const [addComment, setAddComment] = useState();
+
   const globalState = useContext(GlobalState);
 
   const dbProfile = globalState.dbProfileState;
@@ -35,7 +41,7 @@ const AddComment = (props) => {
         axios
           .post('/api/comment/allcomments')
           .then((res) => {
-            globalState.handleAddComments(res.data);
+            dispatch(fetch_comments(res.data));
           })
           .catch((err) => {
             console.log(err);

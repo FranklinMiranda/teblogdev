@@ -6,8 +6,9 @@ import { useAuth0 } from '@auth0/auth0-react';
 import GlobalState from './components/utils/context';
 
 import { useDispatch } from 'react-redux';
-import { fetch_messages} from './components/store/slices/messagesSlice';
-
+import { fetch_messages } from './components/store/slices/messagesSlice';
+import { fetch_comments } from './components/store/slices/commentsSlice';
+import { fetch_profiles } from './components/store/slices/profilesSlice';
 
 import Home from './components/links/home';
 import Profile from './components/links/profile';
@@ -15,14 +16,14 @@ import MyPosts from './components/links/myposts';
 import MyMessages from './components/links/myMessages';
 import AddPosts from './components/posts/addPost';
 import AllPosts from './components/links/allposts';
-import AllProfiles from './components/profiles/allProfiles';
+import AllProfiles from './components/links/allProfiles';
 
 function App() {
+  const dispatch = useDispatch();
+
   const { user } = useAuth0();
 
   const globalState = useContext(GlobalState);
-
-  const dispatch = useDispatch();
 
 
   useEffect(() => {
@@ -55,7 +56,7 @@ function App() {
     axios
       .post('/api/comment/allcomments')
       .then((res) => {
-        globalState.handleAddComments(res.data);
+        dispatch(fetch_comments(res.data));
       })
       .catch((err) => {
         console.log(err);
@@ -64,7 +65,7 @@ function App() {
     axios
       .post('/api/profile/allprofiles')
       .then((res) => {
-        globalState.handleAddProfiles(res.data);
+        dispatch(fetch_profiles(res.data));
       })
       .catch((err) => {
         console.log(err);
