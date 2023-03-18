@@ -10,7 +10,7 @@ const SingleProfile = (props) => {
   const profile = profileArr[props.i];
 
   return (
-    <div>
+    <div className="SingleElement">
       <li>
         <p>Username: {profile.username}</p>
         <p>Name: {profile.name}</p>

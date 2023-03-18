@@ -2,7 +2,7 @@ import MessagesList from "../messages/messagesList";
 
 const MyMessages = () => {
   return (
-    <div>
+    <div className="LinkPage">
       <h1>My Messages</h1>
       <MessagesList/>
     </div>

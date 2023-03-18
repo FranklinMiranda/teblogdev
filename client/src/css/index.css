@@ -1,3 +1,61 @@
+* {
+  background-color: wheat;
+}
+
+.App {
+}
+
 .NavBar {
-    
+}
+
+.NavBar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.NavBar li {
+  float: left;
+}
+
+.Link {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  background-color: #333;
+}
+
+.Link:hover {
+  background-color: #111;
+}
+
+.LinkPage {
+  border: 2px solid #333;
+  margin: 25px;
+  padding: 25px;
+}
+
+.SingleElement {
+  border: 2px solid #333;
+  margin: 25px;
+  padding: 25px;
+}
+
+.Button {
+  color: white;
+  background-color: #333;
+  text-align: center;
+}
+
+.AddComment {
+}
+
+.AddPost {
+}
+
+.SendMessage {
 }

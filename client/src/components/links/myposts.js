@@ -9,7 +9,7 @@ const MyPosts = () => {
   const user = useSelector(selectUser);
 
   return (
-    <div>
+    <div className="LinkPage">
       <h1>My Posts</h1>
       <PostsList user={user} />
     </div>

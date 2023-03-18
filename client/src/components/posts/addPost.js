@@ -51,7 +51,7 @@ const AddPost = () => {
   };
 
   return (
-    <div>
+    <div className="AddPost">
       <h2>Add a Post</h2>
       <form onSubmit={handleSubmit}>
         <label>
@@ -63,8 +63,8 @@ const AddPost = () => {
           Body:
           <textarea value={post.body} onChange={handleChangeBody}></textarea>
         </label>
-        <button type="submit"> Submit </button>
-        <button onClick={handleClear}> Cancel </button>
+        <button className="Button" type="submit"> Submit </button>
+        <button className="Button" onClick={handleClear}> Cancel </button>
       </form>
     </div>
   );

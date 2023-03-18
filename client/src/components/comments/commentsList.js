@@ -17,7 +17,7 @@ const CommentsList = (props) => {
   });
 
   return (
-    <div>
+    <div className="CommentsList">
       <ul>{commentItems}</ul>
     </div>
   );

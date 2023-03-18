@@ -97,7 +97,7 @@ const SinglePost = (props) => {
 
   if (editPostDisplay) {
     return (
-      <div>
+      <div className="SingleElement">
         <form onSubmit={handleSubmit}>
           <label>
             Title:
@@ -108,28 +108,28 @@ const SinglePost = (props) => {
             Body:
             <textarea value={editPost.body} onChange={handleChangeBody}></textarea>
           </label>
-          <button type="submit"> Submit </button>
+          <button className="Button" type="submit"> Submit </button>
         </form>
       </div>
     );
   } else if (post.author === user.username) {
     return (
-      <div>
+      <div className="SingleElement">
         <li key={post.pid}>
           <h4>Title: {post.title}</h4>
           <p>Author: {post.author}</p>
           <p>Body: {post.body}</p>
           <p>Date Created: {post.date_created}</p>
           <LikePost i={props.i} />
-          <button onClick={handleEditPostDisplay}>Edit Post</button>
-          <button onClick={handleDeletePost}>Delete Post</button>
+          <button className="Button" onClick={handleEditPostDisplay}>Edit Post</button>
+          <button className="Button" onClick={handleDeletePost}>Delete Post</button>
           <Comments post={post} />
         </li>
       </div>
     );
   } else {
     return (
-      <div>
+      <div className="SingleElement">
         <li key={post.pid}>
           <h4>Title: {post.title}</h4>
           <p>Author: {post.author}</p>

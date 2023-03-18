@@ -11,11 +11,11 @@ import { fetch_profiles } from './components/store/slices/profilesSlice';
 import { fetch_messages } from './components/store/slices/messagesSlice';
 
 import Home from './components/links/home';
-import Profile from './components/links/profile';
-import MyPosts from './components/links/myposts';
+import MyProfile from './components/links/myProfile';
+import MyPosts from './components/links/myPosts';
 import MyMessages from './components/links/myMessages';
-import AddPost from './components/posts/addPost';
-import AllPosts from './components/links/allposts';
+import CreatePost from './components/links/createPost';
+import AllPosts from './components/links/allPosts';
 import AllProfiles from './components/links/allProfiles';
 
 function App() {
@@ -83,34 +83,48 @@ function App() {
       <nav className="NavBar">
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link className="Link" to="/">
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/myprofile">My Profile</Link>
+            <Link className="Link" to="/myprofile">
+              My Profile
+            </Link>
           </li>
           <li>
-            <Link to="/myposts">My Posts</Link>
+            <Link className="Link" to="/myposts">
+              My Posts
+            </Link>
           </li>
           <li>
-            <Link to="/mymessages">My Messages</Link>
+            <Link className="Link" to="/mymessages">
+              My Messages
+            </Link>
           </li>
           <li>
-            <Link to="/addpost">Add Post</Link>
+            <Link className="Link" to="/createpost">
+              Create A Post
+            </Link>
           </li>
           <li>
-            <Link to="/allposts">All Posts</Link>
+            <Link className="Link" to="/allposts">
+              All Posts
+            </Link>
           </li>
           <li>
-            <Link to="/allprofiles">All Profiles</Link>
+            <Link className="Link" to="/allprofiles">
+              All Profiles
+            </Link>
           </li>
         </ul>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/myprofile" element={<Profile />} />
+        <Route path="/myprofile" element={<MyProfile />} />
         <Route path="/myposts" element={<MyPosts />} />
         <Route path="/mymessages" element={<MyMessages />} />
-        <Route path="/addpost" element={<AddPost />} />
+        <Route path="/createpost" element={<CreatePost />} />
         <Route path="/allposts" element={<AllPosts />} />
         <Route path="/allprofiles" element={<AllProfiles />} />
       </Routes>

@@ -59,12 +59,12 @@ const SendMessage = (props) => {
   if (!displayMessageSender) {
     return (
       <div>
-        <button onClick={handleDisplayMessageSender}>Send Message To: {props.profile.name}</button>
+        <button className="Button" onClick={handleDisplayMessageSender}>Send Message To: {props.profile.name}</button>
       </div>
     );
   } else if (displayMessageSender) {
     return (
-      <div>
+      <div className="SendMessage">
         <form onSubmit={handleSubmit}>
           <label>
             Title:
@@ -75,8 +75,8 @@ const SendMessage = (props) => {
             Body:
             <textarea value={message.body} onChange={handleChangeBody}></textarea>
           </label>
-          <button type="submit"> Submit </button>
-          <button onClick={handleClear}> Cancel </button>
+          <button className="Button" type="submit"> Submit </button>
+          <button className="Button" onClick={handleClear}> Cancel </button>
         </form>
       </div>
     );

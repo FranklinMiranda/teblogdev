@@ -2,7 +2,7 @@ import ProfilesList from '../profiles/allProfilesList';
 
 const AllProfiles = () => {
   return (
-    <div>
+    <div className="LinkPage">
       <h1>All User Profiles</h1>
       <ProfilesList />
     </div>

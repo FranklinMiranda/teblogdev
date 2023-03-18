@@ -25,12 +25,12 @@ const SingleMessage = (props) => {
   };
 
   return (
-    <div>
+    <div className="SingleElement">
       <li>
         <p>Message Sender: {message.message_sender}</p>
         <p>Message Title: {message.message_title}</p>
         <p>Message Body: {message.message_body}</p>
-        <button onClick={handleDeleteMessage}>Delete Message</button>
+        <button className="Button" onClick={handleDeleteMessage}>Delete Message</button>
       </li>
     </div>
   );

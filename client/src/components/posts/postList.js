@@ -22,7 +22,7 @@ const PostsList = (props) => {
   });
 
   return (
-    <div>
+    <div className="PostsList">
       <ul>{postItems}</ul>
     </div>
   );

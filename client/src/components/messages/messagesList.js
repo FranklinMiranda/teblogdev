@@ -19,7 +19,7 @@ const MessagesList = () => {
   });
 
   return (
-    <div>
+    <div className="MessagesList">
       <ul>{messageItems}</ul>
     </div>
   );

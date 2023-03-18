@@ -19,7 +19,7 @@ const ProfilesList = () => {
   });
 
   return (
-    <div>
+    <div className="ProfilesList">
       <ul>{profileItems}</ul>
     </div>
   );

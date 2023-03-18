@@ -53,14 +53,14 @@ const AddComment = (props) => {
   };
 
   return (
-    <div>
+    <div className="AddComment">
       <form onSubmit={handleAddCommentSubmit}>
         <label>
           Add a Comment:
           <input type="text" value={addComment} onChange={handleChangeAddComment}></input>
         </label>
-        <button type="submit">Submit</button>
-        <button onClick={handleAddCommentClear}> Clear</button>
+        <button className="Button" type="submit">Submit</button>
+        <button className="Button" onClick={handleAddCommentClear}> Clear</button>
       </form>
     </div>
   );
