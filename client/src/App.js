@@ -80,7 +80,7 @@ function App() {
 
   return (
     <div className="App">
-      <nav>
+      <nav className="NavBar">
         <ul>
           <li>
             <Link to="/">Home</Link>
