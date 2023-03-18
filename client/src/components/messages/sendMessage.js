@@ -6,8 +6,8 @@ import { fetch_messages } from '../store/slices/messagesSlice';
 import { selectUser } from '../store/slices/userSlice';
 
 const SendMessage = (props) => {
-  const user = useSelector(selectUser);
   const dispatch = useDispatch();
+  const user = useSelector(selectUser);
 
   const [displayMessageSender, setDisplayMessageSender] = useState(false);
   const [message, setMessage] = useState({ title: '', body: '' });

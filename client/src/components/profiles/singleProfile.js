@@ -1,9 +1,9 @@
 import React from 'react';
 
-import SendMessage from '../messages/sendMessage';
-
 import { useSelector } from 'react-redux';
 import { selectProfiles } from '../store/slices/profilesSlice';
+
+import SendMessage from '../messages/sendMessage';
 
 const SingleProfile = (props) => {
   const profileArr = useSelector(selectProfiles);

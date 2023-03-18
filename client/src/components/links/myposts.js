@@ -6,12 +6,12 @@ import { selectUser } from '../store/slices/userSlice';
 import PostsList from '../posts/postList';
 
 const MyPosts = () => {
-  const dbProfile = useSelector(selectUser);
+  const user = useSelector(selectUser);
 
   return (
     <div>
       <h1>My Posts</h1>
-      <PostsList dbProfile={dbProfile} />
+      <PostsList user={user} />
     </div>
   );
 };

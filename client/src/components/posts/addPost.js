@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetch_posts } from '../store/slices/postsSlice';
 import { selectUser } from '../store/slices/userSlice';
 
-const AddPosts = () => {
-  const user = useSelector(selectUser);
+const AddPost = () => {
   const dispatch = useDispatch();
+  const user = useSelector(selectUser);
 
   const [post, setPost] = useState({ title: '', body: '' });
 
@@ -70,4 +70,4 @@ const AddPosts = () => {
   );
 };
 
-export default AddPosts;
+export default AddPost;

@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,7 +7,7 @@ import { selectUser } from '../store/slices/userSlice';
 
 const AddComment = (props) => {
   const dispatch = useDispatch();
-  const dbProfile = useSelector(selectUser);
+  const user = useSelector(selectUser);
 
   const [addComment, setAddComment] = useState();
 
@@ -22,7 +22,7 @@ const AddComment = (props) => {
 
     const data = {
       comment: addComment,
-      author: dbProfile.username,
+      author: user.username,
       uid: post.user_id,
       pid: post.pid,
     };

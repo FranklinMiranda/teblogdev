@@ -7,11 +7,11 @@ import { selectUser } from '../store/slices/userSlice';
 import SingleMessage from './singleMessage';
 
 const MessagesList = () => {
-  const dbProfile = useSelector(selectUser);
-  const messageArr = useSelector(selectMessages);
+  const user = useSelector(selectUser);
+  const messagesArr = useSelector(selectMessages);
 
-  const messageItems = messageArr.map((m, i) => {
-    if (dbProfile.username !== m.message_to) {
+  const messageItems = messagesArr.map((m, i) => {
+    if (user.username !== m.message_to) {
       return;
     }
 

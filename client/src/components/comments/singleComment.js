@@ -7,7 +7,7 @@ import { selectUser } from '../store/slices/userSlice';
 
 const SingleComment = (props) => {
   const dispatch = useDispatch();
-  const dbProfile = useSelector(selectUser);
+  const user = useSelector(selectUser);
 
   const [editComment, setEditComment] = useState(false);
   const [comment, setComment] = useState();
@@ -42,6 +42,7 @@ const SingleComment = (props) => {
           .catch((err) => console.log(err));
       });
 
+    setComment();
     setEditComment(false);
   };
 
@@ -73,7 +74,7 @@ const SingleComment = (props) => {
         </form>
       </div>
     );
-  } else if (props.c.author === dbProfile.username) {
+  } else if (props.c.author === user.username) {
     return (
       <div>
         <li>

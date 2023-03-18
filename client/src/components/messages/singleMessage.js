@@ -4,10 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetch_messages, selectMessages } from '../store/slices/messagesSlice';
 
 const SingleMessage = (props) => {
-  const messageArr = useSelector(selectMessages);
   const dispatch = useDispatch();
+  const messagesArr = useSelector(selectMessages);
 
-  const message = messageArr[props.i];
+  const message = messagesArr[props.i];
 
   const handleDeleteMessage = () => {
     const data = { mid: message.mid };

@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -6,15 +6,15 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useDispatch } from 'react-redux';
 import { fetch_user } from './components/store/slices/userSlice';
 import { fetch_posts } from './components/store/slices/postsSlice';
-import { fetch_profiles } from './components/store/slices/profilesSlice';
 import { fetch_comments } from './components/store/slices/commentsSlice';
+import { fetch_profiles } from './components/store/slices/profilesSlice';
 import { fetch_messages } from './components/store/slices/messagesSlice';
 
 import Home from './components/links/home';
 import Profile from './components/links/profile';
 import MyPosts from './components/links/myposts';
 import MyMessages from './components/links/myMessages';
-import AddPosts from './components/posts/addPost';
+import AddPost from './components/posts/addPost';
 import AllPosts from './components/links/allposts';
 import AllProfiles from './components/links/allProfiles';
 
@@ -95,7 +95,7 @@ function App() {
             <Link to="/mymessages">My Messages</Link>
           </li>
           <li>
-            <Link to="/addpost">Add Posts</Link>
+            <Link to="/addpost">Add Post</Link>
           </li>
           <li>
             <Link to="/allposts">All Posts</Link>
@@ -110,7 +110,7 @@ function App() {
         <Route path="/myprofile" element={<Profile />} />
         <Route path="/myposts" element={<MyPosts />} />
         <Route path="/mymessages" element={<MyMessages />} />
-        <Route path="/addpost" element={<AddPosts />} />
+        <Route path="/addpost" element={<AddPost />} />
         <Route path="/allposts" element={<AllPosts />} />
         <Route path="/allprofiles" element={<AllProfiles />} />
       </Routes>
