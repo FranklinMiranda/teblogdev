@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import store from './components/store/store';
 import { Provider } from 'react-redux';
 
-import ContextState from './context_state';
+import Landing from './landing';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,7 +17,7 @@ root.render(
       authorizationParams={{ redirect_uri: 'http://localhost:3000' }}
     >
       <Provider store={store}>
-        <ContextState />
+        <Landing />
       </Provider>
     </Auth0Provider>
   </BrowserRouter>
