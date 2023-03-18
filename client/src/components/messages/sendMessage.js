@@ -3,8 +3,15 @@ import axios from 'axios';
 
 import GlobalState from '../utils/context';
 
+import { useDispatch } from 'react-redux';
+import { fetch_messages} from '../store/slices/messagesSlice';
+
+
 const SendMessage = (props) => {
   const globalState = useContext(GlobalState);
+  const username = globalState.dbProfileState.username;
+
+  const dispatch = useDispatch()
 
   const [displayMessageSender, setDisplayMessageSender] = useState(false);
   const [message, setMessage] = useState({ title: '', body: '' });
@@ -28,9 +35,6 @@ const SendMessage = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    const username = globalState.dbProfileState.username;
-
     const data = {
       message_sender: username,
       message_to: props.profile.username,
@@ -44,14 +48,14 @@ const SendMessage = (props) => {
         console.log(res);
       })
       .catch((err) => console.log(err))
-      .then(() => handleClear())
       .then(() => {
         axios
           .post('/api/messages/allmessages')
-          .then((res) => globalState.handleAddMessages(res.data))
+          .then((res) => dispatch(fetch_messages(res.data)))
           .catch((err) => console.log(err));
       });
 
+    setMessage({ title: '', body: '' });
     setDisplayMessageSender(false);
   };
 

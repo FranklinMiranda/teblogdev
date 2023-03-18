@@ -5,6 +5,10 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 import GlobalState from './components/utils/context';
 
+import { useDispatch } from 'react-redux';
+import { fetch_messages} from './components/store/slices/messagesSlice';
+
+
 import Home from './components/links/home';
 import Profile from './components/links/profile';
 import MyPosts from './components/links/myposts';
@@ -17,6 +21,9 @@ function App() {
   const { user } = useAuth0();
 
   const globalState = useContext(GlobalState);
+
+  const dispatch = useDispatch();
+
 
   useEffect(() => {
     axios
@@ -66,7 +73,7 @@ function App() {
     axios
       .post('/api/messages/allmessages')
       .then((res) => {
-        globalState.handleAddMessages(res.data);
+        dispatch(fetch_messages(res.data));
       })
       .catch((err) => {
         console.log(err);

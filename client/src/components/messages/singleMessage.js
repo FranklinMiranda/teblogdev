@@ -1,16 +1,16 @@
-import React, { useContext } from 'react';
-import axios from 'axios'
+import axios from 'axios';
 
-import GlobalState from '../utils/context';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetch_messages, selectMessages } from '../store/slices/messagesSlice';
 
 const SingleMessage = (props) => {
-  const globalState = useContext(GlobalState);
-  const message = globalState.messagesState[props.i];
+  const messageArr = useSelector(selectMessages);
+  const dispatch = useDispatch();
+
+  const message = messageArr[props.i];
 
   const handleDeleteMessage = () => {
     const data = { mid: message.mid };
-
-    console.log(data)
 
     axios
       .post('/api/delete/message', data)
@@ -19,7 +19,7 @@ const SingleMessage = (props) => {
       .then(() => {
         axios
           .post('/api/messages/allmessages')
-          .then((res) => globalState.handleAddMessages(res.data))
+          .then((res) => dispatch(fetch_messages(res.data)))
           .catch((err) => console.log(err));
       });
   };
