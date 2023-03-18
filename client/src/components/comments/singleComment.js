@@ -70,25 +70,32 @@ const SingleComment = (props) => {
             Comment:
             <input type="text" value={comment} onChange={handleCommentChange}></input>
           </label>
-          <button className="Button" type="submit"> Submit </button>
+          <button className="Button" type="submit">
+            {' '}
+            Submit{' '}
+          </button>
         </form>
       </div>
     );
   } else if (props.c.author === user.username) {
     return (
       <div className="SingleElement">
-        <li>
+        <li key={props.c.cid}>
           <p>Comment Author: {props.c.author}</p>
           <p>Comment: {props.c.comment}</p>
-          <button className="Button" onClick={handleEditComment}>Edit Comment</button>
-          <button className="Button" onClick={handleDeleteComment}>Delete Comment</button>
+          <button className="Button" onClick={handleEditComment}>
+            Edit Comment
+          </button>
+          <button className="Button" onClick={handleDeleteComment}>
+            Delete Comment
+          </button>
         </li>
       </div>
     );
   } else {
     return (
       <div className="SingleElement">
-        <li>
+        <li key={props.c.cid}>
           <p>Comment Author: {props.c.author}</p>
           <p>Comment: {props.c.comment}</p>
         </li>

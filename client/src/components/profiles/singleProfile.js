@@ -11,7 +11,7 @@ const SingleProfile = (props) => {
 
   return (
     <div className="SingleElement">
-      <li>
+      <li key={profile.Uid}>
         <p>Username: {profile.username}</p>
         <p>Name: {profile.name}</p>
         <p>Email: {profile.email}</p>
