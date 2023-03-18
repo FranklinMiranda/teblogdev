@@ -35,14 +35,14 @@ const LikePost = (props) => {
     };
 
     axios
-      .post('/api/post/updatepostlikes', data)
+      .post('/api/posts/updatepostlikestodb', data)
       .then((res) => {
         console.log(res);
       })
       .catch((err) => console.log(err))
       .then(() => {
         axios
-          .post('/api/post/allposts')
+          .post('/api/posts/allpostsfromdb')
           .then((res) => dispatch(fetch_posts(res.data)))
           .catch((err) => console.log(err));
       });

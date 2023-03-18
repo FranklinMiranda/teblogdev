@@ -45,14 +45,14 @@ const SinglePost = (props) => {
     };
 
     axios
-      .post('/api/post/updatepost', data)
+      .post('/api/posts/updateposttodb', data)
       .then((res) => {
         console.log(res);
       })
       .catch((err) => console.log(err))
       .then(() => {
         axios
-          .post('/api/post/allposts')
+          .post('/api/posts/allpostsfromdb')
           .then((res) => dispatch(fetch_posts(res.data)))
           .catch((err) => console.log(err));
       });
@@ -70,7 +70,7 @@ const SinglePost = (props) => {
       const data = { cid: c.cid };
 
       axios
-        .post('/api/delete/comment', data)
+        .post('/api/comments/deletecommentfromdb', data)
         .then((res) => console.log(res))
         .catch((err) => console.log(err));
     });
@@ -78,18 +78,18 @@ const SinglePost = (props) => {
     const data = { post_id: post.pid };
 
     axios
-      .post('/api/delete/post', data)
+      .post('/api/posts/deletepostfromdb', data)
       .then((res) => console.log(res))
       .catch((err) => console.log(err))
       .then(() => {
         axios
-          .post('/api/post/allposts')
+          .post('/api/posts/allpostsfromdb')
           .then((res) => dispatch(fetch_posts(res.data)))
           .catch((err) => console.log(err));
       })
       .then(() => {
         axios
-          .post('/api/comment/allcomments')
+          .post('/api/comments/allcommentsfromdb')
           .then((res) => dispatch(fetch_comments(res.data)))
           .catch((err) => console.log(err));
       });

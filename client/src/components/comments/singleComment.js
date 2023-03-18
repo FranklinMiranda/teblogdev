@@ -30,14 +30,14 @@ const SingleComment = (props) => {
     };
 
     axios
-      .post('/api/comment/updatecomment', data)
+      .post('/api/comments/updatecommenttodb', data)
       .then((res) => {
         console.log(res);
       })
       .catch((err) => console.log(err))
       .then(() => {
         axios
-          .post('/api/comment/allcomments')
+          .post('/api/comments/allcommentsfromdb')
           .then((res) => dispatch(fetch_comments(res.data)))
           .catch((err) => console.log(err));
       });
@@ -50,12 +50,12 @@ const SingleComment = (props) => {
     const data = { cid: props.c.cid };
 
     axios
-      .post('/api/delete/comment', data)
+      .post('/api/comments/deletecommentfromdb', data)
       .then((res) => console.log(res))
       .catch((err) => console.log(err))
       .then(() => {
         axios
-          .post('/api/comment/allcomments')
+          .post('/api/comments/allcommentsfromdb')
           .then((res) => dispatch(fetch_comments(res.data)))
           .catch((err) => console.log(err));
       });

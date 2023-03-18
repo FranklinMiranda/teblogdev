@@ -25,7 +25,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .post('/api/userprofiletodb', user)
+      .post('/api/user/profiletodb', user)
       .then((res) => {
         console.log(res);
       })
@@ -34,7 +34,7 @@ function App() {
       })
       .then(() => {
         axios
-          .post('/api/userprofilefromdb', user)
+          .post('/api/user/profilefromdb', user)
           .then((res) => dispatch(fetch_user(res.data)))
           .catch((err) => {
             console.log(err);
@@ -42,7 +42,7 @@ function App() {
       });
 
     axios
-      .post('/api/post/allposts')
+      .post('/api/posts/allpostsfromdb')
       .then((res) => {
         dispatch(fetch_posts(res.data));
       })
@@ -51,7 +51,7 @@ function App() {
       });
 
     axios
-      .post('/api/comment/allcomments')
+      .post('/api/comments/allcommentsfromdb')
       .then((res) => {
         dispatch(fetch_comments(res.data));
       })
@@ -60,7 +60,7 @@ function App() {
       });
 
     axios
-      .post('/api/profile/allprofiles')
+      .post('/api/profiles/allprofilesfromdb')
       .then((res) => {
         dispatch(fetch_profiles(res.data));
       })
@@ -69,7 +69,7 @@ function App() {
       });
 
     axios
-      .post('/api/messages/allmessages')
+      .post('/api/messages/allmessagesfromdb')
       .then((res) => {
         dispatch(fetch_messages(res.data));
       })

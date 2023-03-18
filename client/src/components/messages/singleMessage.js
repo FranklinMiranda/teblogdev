@@ -13,12 +13,12 @@ const SingleMessage = (props) => {
     const data = { mid: message.mid };
 
     axios
-      .post('/api/delete/message', data)
+      .post('/api/messages/deletemessagefromdb', data)
       .then((res) => console.log(res))
       .catch((err) => console.log(err))
       .then(() => {
         axios
-          .post('/api/messages/allmessages')
+          .post('/api/messages/allmessagesfromdb')
           .then((res) => dispatch(fetch_messages(res.data)))
           .catch((err) => console.log(err));
       });

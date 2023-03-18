@@ -28,14 +28,14 @@ const AddComment = (props) => {
     };
 
     axios
-      .post('/api/comment/commenttodb', data)
+      .post('/api/comments/commenttodb', data)
       .then((res) => {
         console.log(res);
       })
       .catch((err) => console.log(err))
       .then(() => {
         axios
-          .post('/api/comment/allcomments')
+          .post('/api/comments/allcommentsfromdb')
           .then((res) => {
             dispatch(fetch_comments(res.data));
           })

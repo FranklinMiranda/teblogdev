@@ -35,14 +35,14 @@ const AddPost = () => {
     };
 
     axios
-      .post('/api/post/posttodb', data)
+      .post('/api/posts/posttodb', data)
       .then((res) => {
         console.log(res);
       })
       .catch((err) => console.log(err))
       .then(() => {
         axios
-          .post('/api/post/allposts')
+          .post('/api/posts/allpostsfromdb')
           .then((res) => dispatch(fetch_posts(res.data)))
           .catch((err) => console.log(err));
       });
