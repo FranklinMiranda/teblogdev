@@ -6,7 +6,7 @@ import { fetch_messages } from '../store/slices/messagesSlice';
 import { selectUser } from '../store/slices/userSlice';
 
 const SendMessage = (props) => {
-  const username = useSelector(selectUser);
+  const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
   const [displayMessageSender, setDisplayMessageSender] = useState(false);
@@ -26,13 +26,14 @@ const SendMessage = (props) => {
 
   const handleClear = (event) => {
     event.preventDefault();
+    setDisplayMessageSender(false);
     setMessage({ title: '', body: '' });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = {
-      message_sender: username,
+      message_sender: user.username,
       message_to: props.profile.username,
       message_title: message.title,
       message_body: message.body,
