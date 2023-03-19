@@ -8,13 +8,13 @@ import SingleComment from './singleComment';
 const CommentsList = (props) => {
   const commentsArr = useSelector(selectComments);
 
-  const postComments = commentsArr.filter((c) => {
-    return c.post_id === props.post.pid;
-  });
+  const commentItems = commentsArr.reduce((items, c) => {
+    if (c.post_id === props.post.pid) {
+      items.push(<SingleComment c={c} />);
+    }
 
-  const commentItems = postComments.map((c) => {
-    return <SingleComment c={c} />;
-  });
+    return items;
+  }, []);
 
   return (
     <div className="CommentsList">
