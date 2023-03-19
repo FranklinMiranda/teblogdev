@@ -31,9 +31,7 @@ const SingleComment = (props) => {
 
     axios
       .post('/api/comments/updatecommenttodb', data)
-      .then((res) => {
-        console.log(res);
-      })
+      .then((res) => {})
       .catch((err) => console.log(err))
       .then(() => {
         axios
@@ -51,7 +49,7 @@ const SingleComment = (props) => {
 
     axios
       .post('/api/comments/deletecommentfromdb', data)
-      .then((res) => console.log(res))
+      .then((res) => {})
       .catch((err) => console.log(err))
       .then(() => {
         axios

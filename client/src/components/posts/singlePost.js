@@ -46,9 +46,7 @@ const SinglePost = (props) => {
 
     axios
       .post('/api/posts/updateposttodb', data)
-      .then((res) => {
-        console.log(res);
-      })
+      .then((res) => {})
       .catch((err) => console.log(err))
       .then(() => {
         axios
@@ -71,7 +69,7 @@ const SinglePost = (props) => {
 
       axios
         .post('/api/comments/deletecommentfromdb', data)
-        .then((res) => console.log(res))
+        .then((res) => {})
         .catch((err) => console.log(err));
     });
 
@@ -79,7 +77,7 @@ const SinglePost = (props) => {
 
     axios
       .post('/api/posts/deletepostfromdb', data)
-      .then((res) => console.log(res))
+      .then((res) => {})
       .catch((err) => console.log(err))
       .then(() => {
         axios
@@ -108,7 +106,10 @@ const SinglePost = (props) => {
             Body:
             <textarea value={editPost.body} onChange={handleChangeBody}></textarea>
           </label>
-          <button className="Button" type="submit"> Submit </button>
+          <button className="Button" type="submit">
+            {' '}
+            Submit{' '}
+          </button>
         </form>
       </div>
     );
@@ -121,8 +122,12 @@ const SinglePost = (props) => {
           <p>Body: {post.body}</p>
           <p>Date Created: {post.date_created}</p>
           <LikePost i={props.i} />
-          <button className="Button" onClick={handleEditPostDisplay}>Edit Post</button>
-          <button className="Button" onClick={handleDeletePost}>Delete Post</button>
+          <button className="Button" onClick={handleEditPostDisplay}>
+            Edit Post
+          </button>
+          <button className="Button" onClick={handleDeletePost}>
+            Delete Post
+          </button>
           <Comments post={post} />
         </li>
       </div>

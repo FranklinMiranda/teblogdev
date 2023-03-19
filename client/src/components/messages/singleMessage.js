@@ -14,7 +14,7 @@ const SingleMessage = (props) => {
 
     axios
       .post('/api/messages/deletemessagefromdb', data)
-      .then((res) => console.log(res))
+      .then((res) => {})
       .catch((err) => console.log(err))
       .then(() => {
         axios

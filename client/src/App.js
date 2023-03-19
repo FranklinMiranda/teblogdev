@@ -26,9 +26,7 @@ function App() {
   useEffect(() => {
     axios
       .post('/api/user/profiletodb', user)
-      .then((res) => {
-        console.log(res);
-      })
+      .then((res) => {})
       .catch((err) => {
         console.log(err);
       })

@@ -41,9 +41,7 @@ const SendMessage = (props) => {
 
     axios
       .post('/api/messages/messagetodb', data)
-      .then((res) => {
-        console.log(res);
-      })
+      .then((res) => {})
       .catch((err) => console.log(err))
       .then(() => {
         axios
@@ -59,7 +57,9 @@ const SendMessage = (props) => {
   if (!displayMessageSender) {
     return (
       <div>
-        <button className="Button" onClick={handleDisplayMessageSender}>Send Message To: {props.profile.name}</button>
+        <button className="Button" onClick={handleDisplayMessageSender}>
+          Send Message To: {props.profile.name}
+        </button>
       </div>
     );
   } else if (displayMessageSender) {
@@ -75,8 +75,14 @@ const SendMessage = (props) => {
             Body:
             <textarea value={message.body} onChange={handleChangeBody}></textarea>
           </label>
-          <button className="Button" type="submit"> Submit </button>
-          <button className="Button" onClick={handleClear}> Cancel </button>
+          <button className="Button" type="submit">
+            {' '}
+            Submit{' '}
+          </button>
+          <button className="Button" onClick={handleClear}>
+            {' '}
+            Cancel{' '}
+          </button>
         </form>
       </div>
     );

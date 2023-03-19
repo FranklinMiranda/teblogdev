@@ -37,7 +37,8 @@ const AddPost = () => {
     axios
       .post('/api/posts/posttodb', data)
       .then((res) => {
-        console.log(res);
+        {
+        }
       })
       .catch((err) => console.log(err))
       .then(() => {
@@ -63,8 +64,14 @@ const AddPost = () => {
           Body:
           <textarea value={post.body} onChange={handleChangeBody}></textarea>
         </label>
-        <button className="Button" type="submit"> Submit </button>
-        <button className="Button" onClick={handleClear}> Cancel </button>
+        <button className="Button" type="submit">
+          {' '}
+          Submit{' '}
+        </button>
+        <button className="Button" onClick={handleClear}>
+          {' '}
+          Cancel{' '}
+        </button>
       </form>
     </div>
   );

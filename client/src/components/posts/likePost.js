@@ -37,7 +37,8 @@ const LikePost = (props) => {
     axios
       .post('/api/posts/updatepostlikestodb', data)
       .then((res) => {
-        console.log(res);
+        {
+        }
       })
       .catch((err) => console.log(err))
       .then(() => {
@@ -57,7 +58,9 @@ const LikePost = (props) => {
       <div>
         <p>Liked By:</p>
         <ul>{postLikes}</ul>
-        <button className="Button" onClick={handleLike}>Like</button>
+        <button className="Button" onClick={handleLike}>
+          Like
+        </button>
       </div>
     );
   } else {
@@ -65,7 +68,9 @@ const LikePost = (props) => {
       <div>
         <p>Liked By:</p>
         <ul>{postLikes}</ul>
-        <button className="Button" onClick={handleUnlike}>Unlike</button>
+        <button className="Button" onClick={handleUnlike}>
+          Unlike
+        </button>
       </div>
     );
   }

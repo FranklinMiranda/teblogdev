@@ -29,9 +29,7 @@ const AddComment = (props) => {
 
     axios
       .post('/api/comments/commenttodb', data)
-      .then((res) => {
-        console.log(res);
-      })
+      .then((res) => {})
       .catch((err) => console.log(err))
       .then(() => {
         axios
@@ -59,8 +57,13 @@ const AddComment = (props) => {
           Add a Comment:
           <input type="text" value={addComment} onChange={handleChangeAddComment}></input>
         </label>
-        <button className="Button" type="submit">Submit</button>
-        <button className="Button" onClick={handleAddCommentClear}> Clear</button>
+        <button className="Button" type="submit">
+          Submit
+        </button>
+        <button className="Button" onClick={handleAddCommentClear}>
+          {' '}
+          Clear
+        </button>
       </form>
     </div>
   );
