@@ -61,7 +61,7 @@ const SinglePost = (props) => {
 
   const handleDeletePost = () => {
     const postComments = commentsArr.filter((c) => {
-      return c.post_id == post.pid;
+      return c.post_id === post.pid;
     });
 
     postComments.forEach((c) => {

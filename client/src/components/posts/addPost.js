@@ -36,10 +36,7 @@ const AddPost = () => {
 
     axios
       .post('/api/posts/posttodb', data)
-      .then((res) => {
-        {
-        }
-      })
+      .then((res) => {})
       .catch((err) => console.log(err))
       .then(() => {
         axios
