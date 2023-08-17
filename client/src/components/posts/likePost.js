@@ -37,7 +37,7 @@ const LikePost = (props) => {
     axios
       .post('/api/posts/updatepostlikestodb', data)
       .then((res) => {
-        
+        {}
       })
       .catch((err) => console.log(err))
       .then(() => {
