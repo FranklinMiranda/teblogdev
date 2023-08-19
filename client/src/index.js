@@ -15,7 +15,7 @@ root.render(
     <Auth0Provider
       domain="dev-yfnh5rsri6uihrxp.us.auth0.com"
       clientId="fzqgnVurba26VOn2X3mtENcDECis00sE"
-      authorizationParams={{ redirect_uri: 'http://localhost:3000' }}
+      authorizationParams={{ redirect_uri: 'http://localhost' }}
     >
       <Provider store={store}>
         <Landing />
