@@ -20,8 +20,6 @@ const MessagesList = () => {
     return items;
   }, []);
 
-  console.log(messageItems.length);
-
   const indexOfLastMessage = pageInfo.currentPage * pageInfo.perPage;
   const indexOfFirstMessage = indexOfLastMessage - pageInfo.perPage;
   const currentMessages = messageItems.slice(indexOfFirstMessage, indexOfLastMessage);
